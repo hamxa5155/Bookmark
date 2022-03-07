@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(
     cors({
       origin: "http://54.211.16.191",
-      origin: "*",
+      // origin: "*",
       credentials: true,
     })
   );
