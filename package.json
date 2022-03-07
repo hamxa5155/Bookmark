@@ -1,0 +1,44 @@
+{
+  "name": "bookmarkd-mvp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "set REACT_APP_PROXY=http://localhost:8080&& concurrently \"cd backend && nodemon server.js\" \"cd frontend && npm start\"",
+    "build:test": "cd frontend && set REACT_APP_PROXY=http://localhost:8080&& npm run build",
+    "start:test": "set NODE_ENV=production&& set PORT=8080&& set REACT_APP_PROXY=http://localhost:8080&& cd backend && pm2 start server.js",
+    "build:prod": "cd frontend && export REACT_APP_PROXY=https://bookmarkdofficial.com&& npm run build",
+    "start:prod": "export NODE_ENV=production&& export PORT=80&& export REACT_APP_PROXY=https://bookmarkdofficial.com&& cd backend && authbind --deep pm2 start server.js",
+    "end": "cd backend && pm2 stop server.js",
+    "start:backend": "nodemon ./bin/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.691.0",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "concurrently": "^5.2.0",
+    "connect-mongo": "^3.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "fetch": "^1.1.0",
+    "helmet": "^3.23.1",
+    "mongoose": "^5.9.18",
+    "multer": "^1.4.3",
+    "nodemailer": "^6.7.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "randomatic": "^3.1.1",
+    "shortid": "^2.2.16",
+    "socket.io": "^2.3.0",
+    "stripe": "^8.67.0",
+    "uuid-1345": "^1.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
