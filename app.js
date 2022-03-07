@@ -11,28 +11,35 @@ const multer = require("multer");
 
 const app = express();
 const port = process.env.PORT || 8080;
-
+app.use(
+  cors({
+    origin: "*",
+    // origin: '*',
+    credentials: true,
+  })
+);
 app.use("/uploads", express.static(__dirname + "/uploads"));
+
 if (process.env.NODE_ENV === "production") {
   app.use(compression());
   app.use(helmet());
   app.use(express.static(path.join(__dirname, "../frontend/build")));
-  app.use(
-    cors({
-      origin: "http://54.211.16.191",
-      // origin: "*",
-      credentials: true,
-    })
-  );
+  // app.use(
+  //   cors({
+  //     origin: "http://54.211.16.191",
+  //     // origin: "*",
+  //     credentials: true,
+  //   })
+  // );
   console.log("Running in production!!");
 } else {
-  app.use(
-    cors({
-      origin: "http://localhost:3000",
-      // origin: '*',
-      credentials: true,
-    })
-  );
+  // app.use(
+  //   cors({
+  //     origin: "http://localhost:3000",
+  //     // origin: '*',
+  //     credentials: true,
+  //   })
+  // );
 }
 // const server = app.listen(port, () => {
 //     console.log(`Listening to port ${port}`)
