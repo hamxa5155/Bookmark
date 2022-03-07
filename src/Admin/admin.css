@@ -1,0 +1,280 @@
+.Main-wrapper {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.card {
+  width: 50%;
+  height: 30rem;
+  /* background-image: url(../assets/Background-image.jpg); */
+  text-align: center;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 3px 11px rgb(0 0 0 / 8%);
+  background-position: center;
+  /* border: 3px solid white; */
+  margin: auto;
+}
+.card-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.flex {
+  display: flex;
+}
+.card .heading {
+  color: black;
+  font-size: 40px;
+  font-family: Inter;
+  font-weight: 600;
+  margin: 10px;
+  text-transform: capitalize;
+}
+.card .fields {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.card .button {
+  background-color: transparent;
+  color: white;
+  font-family: cursive;
+  font-weight: 600;
+  border: 1px solid white;
+  border-radius: 21px;
+  width: 107px;
+  height: 38px;
+  margin: 40px;
+}
+.width-height {
+  height: 100vh;
+  width: 100%;
+}
+/* .card .button:hover {
+    background-color: white;
+    color: white;
+  
+    border: 1px solid #862222;
+  } */
+
+.change-user {
+  background: #862222;
+  height: 30px;
+  width: 137px;
+  border-radius: 14px;
+  margin: auto;
+  display: flex;
+}
+.admin-button {
+  width: 50%;
+  border-right: 1px solid white;
+  height: 100%;
+}
+.staff-button {
+  width: 50%;
+
+  height: 100%;
+}
+
+.centered {
+  justify-content: center;
+  display: flex;
+  z-index: 99;
+}
+.login-one {
+  /* background-image: url(../assets/COCKTAIL.jpg); */
+  background-size: cover;
+
+  width: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.login-two {
+  /* background-image: url(../assets/special-4.jpg); */
+  background-size: cover;
+
+  width: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.login-three {
+  background-image: url(https://picsum.photos);
+  background-size: cover;
+  height: 90%;
+  width: 92%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.login-four {
+  /* background-image: url(../assets/special-6.jpg); */
+  background-size: cover;
+  height: 90%;
+  width: 92%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.login-five {
+  /* background-image: url(../assets/redshisha.jpg); */
+  background-size: cover;
+  height: 96%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.login-six {
+  /* background-image: url(../assets/yellowshisha.jpg); */
+  background-size: cover;
+  height: 100%;
+  width: 35%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.login-seven {
+  /* background-image: url(../assets/blueshisha.jpg); */
+  background-size: cover;
+  height: 100%;
+  width: 35%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.login-eight {
+  /* background-image: url(../assets/greenshisha.jpg); */
+  background-size: cover;
+  height: 100%;
+  width: 35%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+/* //Staff Css for login page*/
+
+.staff-one {
+  /* background-image: url(../assets/special-7.jpg); */
+  background-size: cover;
+  height: 90%;
+  width: 92%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.staff-two {
+  /* background-image: url(../assets/special-8.jpg); */
+  background-size: cover;
+  height: 96%;
+  width: 91%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.staff-three {
+  /* background-image: url(../assets/SALEP.jpg); */
+  background-size: cover;
+  height: 96%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.staff-four {
+  /* background-image: url(../assets/TURKISHCOFFEE.jpg); */
+  background-size: cover;
+
+  width: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.staff-five {
+  /* background-image: url(../assets/BEER.jpg); */
+  background-size: cover;
+
+  width: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.staff-six {
+  /* background-image: url(../assets/turkishtea.jpg); */
+  background-size: cover;
+  height: 100%;
+  width: 35%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.staff-seven {
+  /* background-image: url(../assets/greentea.jpg); */
+  background-size: cover;
+  height: 100%;
+  width: 35%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+.staff-eight {
+  /* background-image: url(../assets/groundcoffee.jpg); */
+  background-size: cover;
+  height: 100%;
+  width: 35%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+/* Custom row for login first box */
+
+.cus-row {
+  flex-direction: row;
+  display: flex;
+  height: 25%;
+}
+.cus-row2 {
+  flex-direction: row;
+  display: flex;
+  height: 50%;
+}
+.cus-row3 {
+  flex-direction: row;
+  display: flex;
+  height: 25%;
+}
+
+.box2 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
+
+.link_style {
+  text-decoration: none !important;
+}

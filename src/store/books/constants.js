@@ -1,0 +1,3 @@
+export const BOOKS_LOADING  = "BOOKS_LOADING";
+export const BOOKS_SET_DATA  = "BOOKS_SET_DATA";
+export const BOOKS_SET_ALL_BOOKS  = "BOOKS_SET_ALL_BOOKS";

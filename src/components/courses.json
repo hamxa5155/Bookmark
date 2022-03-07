@@ -1,0 +1,129 @@
+{
+    "Courses": [
+    { 
+        "code": "ABE 2012C",
+        "name": "Introduction to Biological Engineering",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 2062",
+        "name": "Biology for Engineers",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 3000C",
+        "name": "Applications in Biological Engineering",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 3212C",
+        "name": "Land and Water Resources Engineering",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 3612C",
+        "name": "Heat and Mass Transfer in Biological Systems",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 3652C",
+        "name": "Physical and Rheological Properties of Biological Materials",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4008",
+        "name": "Control Methods in SmartAg Systems",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4033",
+        "name": "Fundamentals and Applications of Biosensors",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4034",
+        "name": "Remote Sensing in Engineering: Science, Sensors and Applications",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4042C",
+        "name": "Biological Engineering Design 1",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4043C",
+        "name": "Biological Engineering Design 2",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4171",
+        "name": "Power and Machines for Biological Systems",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4231C",
+        "name": "Irrigation and Drainage Engineering",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4413C",
+        "name": "Post-Harvest Operations Engineering",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4641",
+        "name": "Modeling Coupled Natural-Human Systems",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4655C",
+        "name": "Bio-Based Products from Renewable Resources",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4662",
+        "name": "Quantification of Biological Processes",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4812",
+        "name": "Food and Bioprocess Engineering Unit Operations",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4905",
+        "name": "Indiv'id'ual Study in Biological Engineering",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4912",
+        "name": "Integrated Product and Processing Design 1 in Biological Engineering",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4913",
+        "name": "Integrated Product and Process Design 2 in Biological Engineering",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4931",
+        "name": "Professional Issues in Agricultural and Biological Engineering",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4932",
+        "name": "Special Topics",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4935",
+        "name": "Writing Grant Proposals for Scholarships and Fellowships",
+        "type": "course"
+    },
+    { 
+        "code": "ABE 4949",
+        "name": "Work Experience in Biological Engineering",
+        "type": "course"
+    }
+]
+}

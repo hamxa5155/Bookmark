@@ -1,0 +1,289 @@
+@font-face {
+  font-family: "Poppins Regular";
+  src: url("./assets/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins Bold";
+  src: url("./assets/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Poppins SemiBold";
+  src: url("./assets/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Poppins Medium";
+  src: url("./assets/Poppins-Medium.ttf");
+}
+
+* {
+  scroll-margin-top: 8rem;
+}
+
+html {
+  font-size: 100%;
+}
+
+.App {
+  text-align: left;
+  color: #0c572c;
+  font-family: "Poppins Regular";
+  overflow: hidden !important;
+}
+
+.semibold {
+  font-family: "Poppins SemiBold";
+}
+
+.bold {
+  font-family: "Poppins Bold";
+}
+
+.right {
+  text-align: end;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.center-img {
+  vertical-align: sub;
+}
+
+h1 {
+  font-size: 4.5rem;
+  filter: drop-shadow(-4px 4px 0px #0fc662);
+  margin: 0;
+}
+
+h2 {
+  color: #0f6634;
+  font-size: 3rem;
+  margin: 0;
+  padding-bottom: 1rem;
+}
+
+h3 {
+  font-size: 2rem;
+  font-family: "Poppins Bold";
+  color: #066f3a;
+  margin: 0;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-family: "Poppins Medium";
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-family: "Poppins Medium";
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+h2[class~="dropshadow"] {
+  font-family: "Poppins Bold";
+  filter: drop-shadow(-3px 3px 0px #0fc662);
+}
+
+a {
+  font-family: "Poppins Bold";
+  color: #0fc662;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+p {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.tiny-text {
+  font-size: 0.75rem;
+}
+
+input {
+  outline: none;
+  font-family: "Poppins Regular";
+  border: none;
+}
+
+button {
+  border: none;
+  font-family: "Poppins Regular";
+  background-color: #0fc662;
+  color: white;
+  border-radius: 3rem;
+  padding: 0.5rem 6rem;
+  font-size: 1.25rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+}
+
+button:hover {
+  filter: brightness(95%);
+  cursor: pointer;
+}
+
+.btn-mini {
+  margin: 1rem 0 0;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  box-shadow: none;
+}
+
+input {
+}
+
+.spacer {
+  width: 100%;
+  height: 8rem;
+}
+
+.inner {
+  width: 100%;
+  width: -webkit-fill-available;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.inner-contact-us {
+  width: 100%;
+  width: -webkit-fill-available;
+  width: -moz-fill-available;
+  width: fill-available;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.side-by-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+}
+
+.dark-link {
+  color: #0c572c;
+  font-family: "Poppins Bold";
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: 0.5px solid #c4c4c4;
+  margin: 1.5rem 0;
+}
+
+.bubble-top-right {
+  position: absolute;
+  top: -2rem;
+  right: -9rem;
+  z-index: -1;
+}
+
+.bubble-top-left {
+  position: absolute;
+  top: 8rem;
+  left: 0;
+  z-index: -1;
+}
+
+.bubble-bottom-right {
+  position: absolute;
+  bottom: 9rem;
+  right: 0;
+  z-index: -1;
+}
+
+.mini {
+  font-size: 0.75rem;
+}
+
+.mini svg {
+  font-size: 1rem;
+}
+
+div::-webkit-scrollbar {
+  display: none;
+}
+
+.none {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+.empty-state-div {
+  padding: 3% 0 7%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.disabled {
+  background-color: #c4c4c4;
+  color: #6c6c6c;
+}
+
+.disabled img {
+  filter: grayscale(1) brightness(1.5);
+}
+
+.empty-state-title {
+  color: #6c6c6c;
+  margin: 0 auto 4%;
+}
+
+.review-card {
+  width: 14rem;
+  margin: 1rem auto;
+  background-color: white;
+  border-radius: 2rem;
+  padding: 2.5rem 1.5rem 6rem;
+  position: relative;
+}
+
+.review-card-title {
+  padding-bottom: 0.75rem;
+  color: #0fc662;
+  font-size: 1.25rem;
+  font-family: "Poppins SemiBold";
+}
+
+.review-card-bubble {
+  position: absolute;
+  right: 1rem;
+}
+
+@media only screen and (max-width: 750px) {
+  /* ===== YOUR RATINGS ===== */
+
+  .side-by-side {
+    margin-top: -5px;
+  }
+
+  .bold {
+    font-size: 0.5rem;
+  }
+
+  .smallSize .MuiSvgIcon-root {
+    font-size: 0.7rem;
+    margin-top: -4px;
+  }
+}
