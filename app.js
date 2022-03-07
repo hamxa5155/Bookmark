@@ -14,8 +14,6 @@ const port = process.env.PORT || 8080;
 app.use(
   cors({
     origin: "*",
-    // origin: '*',
-    credentials: true,
   })
 );
 app.use("/uploads", express.static(__dirname + "/uploads"));
