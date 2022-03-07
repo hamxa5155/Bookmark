@@ -180,7 +180,7 @@ export function MyChatWidget(props) {
         axios
           .post(`${API_URL}chat/upload-picture`, formData)
           .then(async (response) => {
-            axios.post(`${API_URL}chat/sendemail`, formData);
+            // axios.post(`${API_URL}chat/sendemail`, formData);
             socket.emit("chats", {
               message: newMessage || "\n",
               user_id: localStorage.getItem("USERID"),
@@ -193,11 +193,11 @@ export function MyChatWidget(props) {
           });
       } else {
         //emit socket event
-        axios.post(`${API_URL}chat/sendemail`, {
-          message: newMessage,
-          user_id: localStorage.getItem("USERID"),
-          is_loggedin: localStorage.getItem("PUBBY_TOKEN") ? "yes" : "no",
-        });
+        // axios.post(`${API_URL}chat/sendemail`, {
+        //   message: newMessage,
+        //   user_id: localStorage.getItem("USERID"),
+        //   is_loggedin: localStorage.getItem("PUBBY_TOKEN") ? "yes" : "no",
+        // });
         socket.emit("chats", {
           message: newMessage,
           user_id: localStorage.getItem("USERID"),

@@ -270,7 +270,12 @@ div::-webkit-scrollbar {
   position: absolute;
   right: 1rem;
 }
-
+.no_messa > .self {
+  display: none !important;
+}
+.no_messa > .other {
+  display: none !important;
+}
 @media only screen and (max-width: 750px) {
   /* ===== YOUR RATINGS ===== */
 
