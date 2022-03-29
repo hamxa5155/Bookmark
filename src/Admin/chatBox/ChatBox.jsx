@@ -13,7 +13,7 @@ import { BASE_URL } from "../../config/index";
 import axios from "axios";
 import { API_URL } from "../../config/index";
 import $ from "jquery";
-import "./chatBox.scss";
+import "./chatBox.css";
 export const ChatBox = (props) => {
   const match = useRouteMatch();
   const socket = socketIOClient(BASE_URL);

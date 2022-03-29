@@ -12,7 +12,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { Link } from "@material-ui/core";
-import "./ChatTable.scss";
+import "./ChatTable.css";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
 

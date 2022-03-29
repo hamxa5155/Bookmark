@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./styles.scss";
+import "./styles.css";
 import $ from "jquery";
 import socketIOClient from "socket.io-client";
 // import io from "socket.io-client";
