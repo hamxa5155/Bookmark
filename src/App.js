@@ -9,7 +9,7 @@ import {
 
 import logo from "./logo.svg";
 import "./App.css";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar.js";
 import NavBar2 from "./components/NavBarTwo.js";
 
@@ -50,6 +50,9 @@ import SideBar from "./Admin/SideBar";
 import socketIOClient from "socket.io-client";
 import Adduser from "./Admin/adduser";
 import SupportChat from "./Admin/supportChats/SupportChats";
+import Aboutus from "./pages/Aboutus";
+import Adminlogin from "./Admin/Adminlogin";
+import About from "./Admin/About";
 const socket = socketIOClient(BASE_URL);
 
 function App() {
@@ -92,6 +95,7 @@ function App() {
           {/* clear */}
           <Route exact path="/main-home" render={(props) => <Home />} />
           {/* clear */}
+          <Route exact path='/about-us' component={Aboutus} />
           <Route
             exact
             path="/log-in"
@@ -232,6 +236,8 @@ function App() {
           <Route exact path="/">
             <Redirect to="/main-home" />
           </Route>{" "}
+          <Route exact path="/admin-login" component={Adminlogin} />
+
           <SideBar>
             {/* <Route exact path="/admin/products" component={Products} />*/}
             <Route
@@ -245,7 +251,9 @@ function App() {
               render={(props) => <SupportChat {...props} />}
             />
             <Route exact path="/chat-box/:id" component={ChatBox} />
+            <Route exact path="/admin/about-us" component={About} />
           </SideBar>
+          
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
