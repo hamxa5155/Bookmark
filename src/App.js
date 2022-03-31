@@ -9,7 +9,7 @@ import {
 
 import logo from "./logo.svg";
 import "./App.css";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar.js";
 import NavBar2 from "./components/NavBarTwo.js";
 
@@ -50,6 +50,10 @@ import SideBar from "./Admin/SideBar";
 import socketIOClient from "socket.io-client";
 import Adduser from "./Admin/adduser";
 import SupportChat from "./Admin/supportChats/SupportChats";
+import Condition from "./components/Condition/Condition";
+import Privacy from "./components/Privacy/Privacy";
+import Faq from "./components/Faqe/Faq"
+import Team from "./Admin/Team/Team";
 const socket = socketIOClient(BASE_URL);
 
 function App() {
@@ -91,7 +95,10 @@ function App() {
         <Switch>
           {/* clear */}
           <Route exact path="/main-home" render={(props) => <Home />} />
+         
           {/* clear */}
+          {/* <Route exact path="/privacy" componet={Privacy}/> */}
+        
           <Route
             exact
             path="/log-in"
@@ -229,6 +236,16 @@ function App() {
             path="/new-listing"
             render={(props) => <NewListing {...props} />}
           />
+            <Route path="/privacy">
+           <Privacy/>
+          </Route>
+          <Route path="/condition">
+           <Condition/>
+          </Route>
+          <Route path="/faq">
+           <Faq/>
+          </Route>
+         
           <Route exact path="/">
             <Redirect to="/main-home" />
           </Route>{" "}
@@ -245,6 +262,9 @@ function App() {
               render={(props) => <SupportChat {...props} />}
             />
             <Route exact path="/chat-box/:id" component={ChatBox} />
+            <Route path="/admin/team">
+           <Team/>
+          </Route>
           </SideBar>
           <Route component={NotFound} />
         </Switch>
@@ -263,6 +283,9 @@ function App() {
         onFinishedPlaying={() => setPlay(false)}
       />
     </div>
+
+
+
   );
 }
 

@@ -1,0 +1,57 @@
+.accordian_div{
+    padding: 30px 3% !important;
+    width: 100%;
+    margin-top: 140px;
+}
+.accordion-button:not(.collapsed)::after {
+    background-image: url('../../assets/accor.png') !important;
+    transform: rotate(-180deg);
+
+}
+.accordion-button::after {
+   
+    background-image: url('../../assets/accor.png') !important;
+ 
+ 
+}
+.accordion-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    color: #066f3a;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,border-radius .15s ease;
+}
+.accordion-button:not(.collapsed) {
+    color: #066f3a ;
+    background-color: #e7f1ff;
+    box-shadow:  #066f3a;;
+}
+.accordion-button:focus {
+    z-index: 3;
+    border-color: #066f3a !important ;
+    outline: 0;
+    box-shadow:  #066f3a !important;
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: #066f3a !important ;
+    border: none;
+    outline:  none !important;
+}
+.accordion-button{
+
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
