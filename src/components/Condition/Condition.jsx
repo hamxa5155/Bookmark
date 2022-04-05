@@ -14,7 +14,7 @@ const Condition = () => {
           <div className="condtion_data">
             <h2>Date de dernière mise à jour : 28 sept.-21</h2>
             <h4>
-              Les conditions générales qui suivent gouvernent et s'appliquent à
+              Les conditions générales qui suivent gouvernent et s'appliquent à             
               votre utilisation ou recours au site maintenu par Café Gitana Inc.
               (le "cafegitana.com"). En accédant au site ou en y navigant, vous
               déclarez avoir lu et compris les conditions générales

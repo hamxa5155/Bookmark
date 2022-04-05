@@ -19,17 +19,21 @@ function Footer() {
             <Col xl={2} lg={2} md={2}>
               <h5>ABOUT</h5>
               <div>
+                <a href="/about-us" className="none">About us</a>
+              </div>
+              <div>
                 <a href="/the-team" className="none">Our Team</a>
               </div>
               <div>
                 <a href="/partners" className="none">Partnerships</a>
               </div>
               <div>
-                <a href="" className="none">Privacy Policy</a>
+                <a href="/Privacy" className="none">Privacy Policy</a>
               </div>
               <div>
-                <a href="" className="none">Terms & Conditions</a>
+                <a href="/Condition" className="none">Terms & Conditions</a>
               </div>
+              
             </Col>
             <Col xl={2} lg={2} md={2}>
               <h5>COMMUNITY</h5>
@@ -54,7 +58,7 @@ function Footer() {
               </div>
 
               <div>
-                <a href="/faq" className="none">FAQ</a>
+                <a href="/Faq" className="none">FAQ</a>
               </div>
 
             </Col>

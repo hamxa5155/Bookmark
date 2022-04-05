@@ -50,11 +50,18 @@ import SideBar from "./Admin/SideBar";
 import socketIOClient from "socket.io-client";
 import Adduser from "./Admin/adduser";
 import SupportChat from "./Admin/supportChats/SupportChats";
-import Condition from "./components/Condition/Condition";
+import Aboutus from "./pages/Aboutus";
+import Adminlogin from "./Admin/Adminlogin";
+import About from "./Admin/About";
 import Privacy from "./components/Privacy/Privacy";
-import Faq from "./components/Faqe/Faq"
+import Faq from "./components/Faqe/Faq";
+import Condition from "./components/Condition/Condition";
 import Team from "./Admin/Team/Team";
+
+import Pagination from "./components/Pagination/Pagination";
+import Bloginfo from "./components/Bloginfo/Bloginfo";
 const socket = socketIOClient(BASE_URL);
+
 
 function App() {
   const [newMessage, setNewMessage] = useState("");
@@ -97,8 +104,7 @@ function App() {
           <Route exact path="/main-home" render={(props) => <Home />} />
          
           {/* clear */}
-          {/* <Route exact path="/privacy" componet={Privacy}/> */}
-        
+          <Route exact path='/about-us' component={Aboutus} />
           <Route
             exact
             path="/log-in"
@@ -245,12 +251,26 @@ function App() {
           <Route path="/faq">
            <Faq/>
           </Route>
+          
+          <Route path="/bloge">
+           <Pagination/>
+          </Route>
+
+          <Route path="/bLOginfo">
+           <Bloginfo/>
+          </Route>
+         
          
           <Route exact path="/">
             <Redirect to="/main-home" />
           </Route>{" "}
+          <Route exact path="/admin-login" component={Adminlogin} />
+         
           <SideBar>
             {/* <Route exact path="/admin/products" component={Products} />*/}
+            <Route path="/team">
+           <Team/>
+          </Route>
             <Route
               exact
               path="/add-users"
@@ -262,10 +282,9 @@ function App() {
               render={(props) => <SupportChat {...props} />}
             />
             <Route exact path="/chat-box/:id" component={ChatBox} />
-            <Route path="/admin/team">
-           <Team/>
-          </Route>
+            <Route exact path="/admin/about-us" component={About} />
           </SideBar>
+          
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

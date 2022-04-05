@@ -14,15 +14,16 @@ const Team = () => {
         <div className="team_data">
           <h1>join our team</h1>
           <div>
+          
             <input type="file" id="file-input" onChange={handlechange} className="input_img" />
           </div>
           {uploadfile ? (
-            <div>
-              <img src={uploadfile} alt="" height="50px" width="50px" />
-            </div>
-          ) : (
-            ""
-          )}
+                <div className="img-div">
+                  <img src={uploadfile} alt="" className="image-size"  />
+                </div>
+              ) : (
+                ""
+              )}
           <div className="input_name">
             <input
               type="text"
