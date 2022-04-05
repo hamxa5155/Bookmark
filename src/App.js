@@ -235,7 +235,7 @@ function App() {
           />
           <Route exact path="/">
             <Redirect to="/main-home" />
-          </Route>{" "}
+          </Route>
           <Route exact path="/admin-login" component={Adminlogin} />
 
           <SideBar>
@@ -253,7 +253,7 @@ function App() {
             <Route exact path="/chat-box/:id" component={ChatBox} />
             <Route exact path="/admin/about-us" component={About} />
           </SideBar>
-          
+
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
