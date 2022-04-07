@@ -57,9 +57,13 @@ import Privacy from "./components/Privacy/Privacy";
 import Faq from "./components/Faqe/Faq";
 import Condition from "./components/Condition/Condition";
 import Team from "./Admin/Team/Team";
-
+import Blogeditior from "./pages/Blogeditior";
 import Pagination from "./components/Pagination/Pagination";
 import Bloginfo from "./components/Bloginfo/Bloginfo";
+import Adminfaq from "./pages/Adminfaq"
+import Forgetpassword from "./Admin/Team/Forgetpassword";
+import Resetpaswword from "./Admin/Team/Resetpaswword";
+
 const socket = socketIOClient(BASE_URL);
 
 
@@ -255,8 +259,23 @@ function App() {
           <Route path="/bloge">
            <Pagination/>
           </Route>
+          <Route path="/editor">
+           <Blogeditior/>
+          </Route>
+
+
+          <Route path="/resetpasword">
+           <Resetpaswword/>
+          </Route>
+
+          <Route path="/setemail">
+           <Forgetpassword/>
+          </Route>
 
           <Route path="/bLOginfo">
+           <Bloginfo/>
+          </Route>
+           <Route path="/bLOginfo">
            <Bloginfo/>
           </Route>
          
@@ -270,6 +289,9 @@ function App() {
             {/* <Route exact path="/admin/products" component={Products} />*/}
             <Route path="/team">
            <Team/>
+          </Route>
+          <Route path="/adminfaq">
+           <Adminfaq/>
           </Route>
             <Route
               exact

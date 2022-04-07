@@ -2876,7 +2876,6 @@ input:checked + .inbox-slider:before {
   font-weight: 300;
   font-size: 16px;
   line-height: 19px;
-
   color: #414441;
 }
 .teamHeadingMain {
@@ -2913,4 +2912,7 @@ input:checked + .inbox-slider:before {
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
   content: '';
+}
+.editor{
+  margin-top: 200px;
 }

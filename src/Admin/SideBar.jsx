@@ -42,6 +42,7 @@ import { BiFoodMenu } from "react-icons/bi";
 import { BiSupport } from "react-icons/bi";
 import { FaJediOrder } from "react-icons/fa";
 import pic from "../assets/bookmarkd_logo_03.svg";
+import Adminfaq from "../pages/Adminfaq";
 
 const drawerWidth = 300;
 
@@ -349,6 +350,46 @@ function SideBar(props) {
             </ListItemText>
           </ListItem>
         </Link>
+
+
+
+        <Link className="link_style" to="/Adminfaq">
+          <ListItem
+            onClick={() => setcurrentpath("/Adminfaq")}
+            button
+            key="/user"
+            className="Center"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              borderRight:
+                currentpath === "/Adminfaq"
+                  ? "6px solid #000"
+                  : "6px solid transparent",
+            }}
+          >
+            <ListItemIcon
+              style={{
+                fontSize: "25px",
+                color: currentpath === "/Adminfaq" ? "#000" : "#828282",
+              }}
+            >
+              <FaJediOrder size={24} color="black" />{" "}
+            </ListItemIcon>
+            <ListItemText
+              style={{
+                width: "76px",
+                color: currentpath === "/Adminfaq" ? "#000" : "#828282",
+              }}
+            >
+              <span className="content"> Add FAQ</span>
+            </ListItemText>
+          </ListItem>
+        </Link>
+
+
+
+
         <Link className="link_style" to="/admin/about-us">
           <ListItem
            onClick={() => setcurrentpath("/admin/about-us")}
