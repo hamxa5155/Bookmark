@@ -106,7 +106,7 @@ function App() {
         <Switch>
           {/* clear */}
           <Route exact path="/main-home" render={(props) => <Home />} />
-         
+
           {/* clear */}
           <Route exact path='/about-us' component={Aboutus} />
           <Route
@@ -246,18 +246,18 @@ function App() {
             path="/new-listing"
             render={(props) => <NewListing {...props} />}
           />
-            <Route path="/privacy">
-           <Privacy/>
+          <Route path="/privacy">
+            <Privacy />
           </Route>
           <Route path="/condition">
-           <Condition/>
+            <Condition />
           </Route>
           <Route path="/faq">
-           <Faq/>
+            <Faq />
           </Route>
-          
+
           <Route path="/bloge">
-           <Pagination/>
+            <Pagination />
           </Route>
           <Route path="/editor">
            <Blogeditior/>
@@ -272,27 +272,21 @@ function App() {
            <Forgetpassword/>
           </Route>
 
-          <Route path="/bLOginfo">
-           <Bloginfo/>
+          <Route path="/bloginfo">
+            <Bloginfo />
           </Route>
-           <Route path="/bLOginfo">
-           <Bloginfo/>
-          </Route>
-         
-         
+
+
           <Route exact path="/">
             <Redirect to="/main-home" />
-          </Route>{" "}
+          </Route>
+
           <Route exact path="/admin-login" component={Adminlogin} />
-         
           <SideBar>
             {/* <Route exact path="/admin/products" component={Products} />*/}
             <Route path="/team">
-           <Team/>
-          </Route>
-          <Route path="/adminfaq">
-           <Adminfaq/>
-          </Route>
+              <Team />
+            </Route>
             <Route
               exact
               path="/add-users"
@@ -306,7 +300,7 @@ function App() {
             <Route exact path="/chat-box/:id" component={ChatBox} />
             <Route exact path="/admin/about-us" component={About} />
           </SideBar>
-          
+
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

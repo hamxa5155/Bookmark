@@ -1,16 +1,48 @@
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import Swal from "sweetalert2";
+import { connect } from "react-redux";
+import { createAboutUs, fetchAboutUs } from "../store/aboutUs/actions";
 
 import { Link } from "react-router-dom";
 import "../Admin/About.css";
-const About = () => {
-  const [uploadfile, setuploadFile] = useState("");
-  // console.log(uploadfile)
-  const handlechange = (e) => {
-    // e.preventDefault()
-    if (e.target.files.length) {
-      setuploadFile(URL.createObjectURL(e.target.files[0]));
-      //    console.log(uploadfile)
+const About = (props) => {
+  const [aboutUsState, setAboutUsState] = useState({
+    uploadfile: "",
+    imageName: "",
+    heading: "",
+    detail: "",
+  });
+
+  const handlechange = (e, image) => {
+    if (image) {
+      setAboutUsState({
+        ...aboutUsState,
+        ["uploadfile"]: URL.createObjectURL(e.target.files[0]),
+        ["imageName"]: e.target.files[0],
+      });
+    } else {
+      console.log("other than data");
+      setAboutUsState({
+        ...aboutUsState,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
+
+  const handleAddAboutUs = async () => {
+    try {
+      let formData = new FormData();
+      formData.append("image", aboutUsState.imageName);
+      formData.append("heading", aboutUsState.heading);
+      formData.append("detail", aboutUsState.detail);
+      const res = await props.createAboutUs(formData);
+      Swal.fire("Successfully uploaded data", "", "success").then(() => {
+        // history.push("/dashboard/listings");
+      });
+    } catch (err) {
+      console.log("error", err);
+      Swal.fire("Unable to be uploaded data", "", "error");
     }
   };
 
@@ -35,14 +67,17 @@ const About = () => {
                     // className="file-field"
                     type="file"
                     id="file-input"
-                    onChange={handlechange}
-                    
+                    onChange={(e) => handlechange(e, "image")}
                   />
                 </div>
               </div>
-              {uploadfile ? (
+              {aboutUsState.uploadfile ? (
                 <div className="img-div">
-                  <img src={uploadfile} alt="" className="image-size"  />
+                  <img
+                    src={aboutUsState.uploadfile}
+                    alt=""
+                    className="image-size"
+                  />
                 </div>
               ) : (
                 ""
@@ -53,6 +88,9 @@ const About = () => {
                   className="heading-field"
                   type="text"
                   placeholder="Heading"
+                  name="heading"
+                  value={aboutUsState.heading}
+                  onChange={(e) => handlechange(e)}
                   required
                 />
               </div>
@@ -60,13 +98,14 @@ const About = () => {
                 <textarea
                   className="textarea-field"
                   type="text"
+                  name="detail"
                   placeholder="Detail"
+                  value={aboutUsState.detail}
+                  onChange={(e) => handlechange(e)}
                 />
               </div>
-              <div className="mt-5">
-                <Link to="/" className="about-publish-button">
-                  Publish
-                </Link>
+              <div className="mt-5" onClick={() => handleAddAboutUs()}>
+                <span className="about-publish-button">Publish</span>
               </div>
             </div>
           </Col>
@@ -76,4 +115,12 @@ const About = () => {
   );
 };
 
-export default About;
+const mapStateToProps = (state) => ({
+  // user: state.auth.user,
+  // books: state.books.allBooks,
+});
+const mapDispatchToProps = {
+  fetchAboutUs,
+  createAboutUs,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(About);

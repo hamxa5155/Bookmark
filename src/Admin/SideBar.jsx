@@ -7,8 +7,6 @@ import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 
-
-
 import "./admin.css";
 
 import List from "@material-ui/core/List";
@@ -36,7 +34,7 @@ import { FiLogOut } from "react-icons/fi";
 
 import { TiThMenu } from "react-icons/ti";
 import { FiStar } from "react-icons/fi";
-import {GrCircleInformation} from "react-icons/gr"
+import { GrCircleInformation } from "react-icons/gr";
 import { AiOutlineShop } from "react-icons/ai";
 import { BiFoodMenu } from "react-icons/bi";
 import { BiSupport } from "react-icons/bi";
@@ -280,10 +278,9 @@ function SideBar(props) {
           </ListItem>
         </Link>
 
-
-        <Link className="link_style" to="/Team">
+        <Link className="link_style" to="/team">
           <ListItem
-            onClick={() => setcurrentpath("/Team")}
+            onClick={() => setcurrentpath("/team")}
             button
             key="/user"
             className="Center"
@@ -291,7 +288,7 @@ function SideBar(props) {
               display: "flex",
               justifyContent: "center",
               borderRight:
-                currentpath === "/Team"
+                currentpath === "/team"
                   ? "6px solid #000"
                   : "6px solid transparent",
             }}
@@ -299,7 +296,7 @@ function SideBar(props) {
             <ListItemIcon
               style={{
                 fontSize: "25px",
-                color: currentpath === "/Team" ? "#000" : "#828282",
+                color: currentpath === "/team" ? "#000" : "#828282",
               }}
             >
               <FaJediOrder size={24} color="black" />{" "}
@@ -307,7 +304,7 @@ function SideBar(props) {
             <ListItemText
               style={{
                 width: "76px",
-                color: currentpath === "/Team" ? "#000" : "#828282",
+                color: currentpath === "/team" ? "#000" : "#828282",
               }}
             >
               <span className="content">Add Team</span>
@@ -392,39 +389,35 @@ function SideBar(props) {
 
         <Link className="link_style" to="/admin/about-us">
           <ListItem
-           onClick={() => setcurrentpath("/admin/about-us")}
-           button
-           key="/user"
-           className="Center"
-           style={{
-             display: "flex",
-             justifyContent: "center",
-             borderRight:
-               currentpath === "/admin/support-chats"
-                 ? "6px solid #000"
-                 : "6px solid transparent",
-           }}
-           >
-              <ListItemIcon
-               style={{
+            onClick={() => setcurrentpath("/admin/about-us")}
+            button
+            key="/user"
+            className="Center"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              borderRight:
+                currentpath === "/admin/support-chats"
+                  ? "6px solid #000"
+                  : "6px solid transparent",
+            }}
+          >
+            <ListItemIcon
+              style={{
                 fontSize: "25px",
-                color:
-                  currentpath === "/admin/about-us" ? "#000" : "#828282",
+                color: currentpath === "/admin/about-us" ? "#000" : "#828282",
               }}
-              >
-                <GrCircleInformation size={24} color="black" />
-                </ListItemIcon>
-                <ListItemText
-                  style={{
-                    width: "76px",
-                    color:
-                      currentpath === "/admin/about-us" ? "#000" : "#828282",
-                  }}
-                >
-                      <span className="content">About us</span>
-                </ListItemText>
-
-              
+            >
+              <GrCircleInformation size={24} color="black" />
+            </ListItemIcon>
+            <ListItemText
+              style={{
+                width: "76px",
+                color: currentpath === "/admin/about-us" ? "#000" : "#828282",
+              }}
+            >
+              <span className="content">About us</span>
+            </ListItemText>
           </ListItem>
         </Link>
       </List>

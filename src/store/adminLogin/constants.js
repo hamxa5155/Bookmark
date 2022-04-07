@@ -1,0 +1,3 @@
+export const ADDABOUTUS = "ADDABOUTUS";
+export const GETABOUTUS = "GETABOUTUS";
+export const ABOUT_US_LOADING = "ABOUT_US_LOADING";
