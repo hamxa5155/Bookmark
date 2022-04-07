@@ -2003,7 +2003,7 @@ input:checked + .inbox-slider:before {
   height: auto;
 }
 .collapse:not(.show) {
-  display: inherit !important;
+  /* display: inherit !important; */
 }
 .collapse {
   transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);

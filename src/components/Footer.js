@@ -28,10 +28,10 @@ function Footer() {
                 <a href="/partners" className="none">Partnerships</a>
               </div>
               <div>
-                <a href="" className="none">Privacy Policy</a>
+                <a href="/Privacy" className="none">Privacy Policy</a>
               </div>
               <div>
-                <a href="" className="none">Terms & Conditions</a>
+                <a href="/Condition" className="none">Terms & Conditions</a>
               </div>
               
             </Col>
@@ -58,7 +58,7 @@ function Footer() {
               </div>
 
               <div>
-                <a href="/faq" className="none">FAQ</a>
+                <a href="/Faq" className="none">FAQ</a>
               </div>
 
             </Col>

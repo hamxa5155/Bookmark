@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-
+import Team from "./Team/Team";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
-//css
+
 import "./admin.css";
 
 import List from "@material-ui/core/List";
@@ -34,12 +34,13 @@ import { FiLogOut } from "react-icons/fi";
 
 import { TiThMenu } from "react-icons/ti";
 import { FiStar } from "react-icons/fi";
-import {GrCircleInformation} from "react-icons/gr"
+import { GrCircleInformation } from "react-icons/gr";
 import { AiOutlineShop } from "react-icons/ai";
 import { BiFoodMenu } from "react-icons/bi";
 import { BiSupport } from "react-icons/bi";
 import { FaJediOrder } from "react-icons/fa";
 import pic from "../assets/bookmarkd_logo_03.svg";
+
 const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
@@ -275,6 +276,41 @@ function SideBar(props) {
             </ListItemText>
           </ListItem>
         </Link>
+
+        <Link className="link_style" to="/team">
+          <ListItem
+            onClick={() => setcurrentpath("/team")}
+            button
+            key="/user"
+            className="Center"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              borderRight:
+                currentpath === "/team"
+                  ? "6px solid #000"
+                  : "6px solid transparent",
+            }}
+          >
+            <ListItemIcon
+              style={{
+                fontSize: "25px",
+                color: currentpath === "/team" ? "#000" : "#828282",
+              }}
+            >
+              <FaJediOrder size={24} color="black" />{" "}
+            </ListItemIcon>
+            <ListItemText
+              style={{
+                width: "76px",
+                color: currentpath === "/team" ? "#000" : "#828282",
+              }}
+            >
+              <span className="content">Add Team</span>
+            </ListItemText>
+          </ListItem>
+        </Link>
+
         <Link className="link_style" to="/support-chats">
           <ListItem
             onClick={() => setcurrentpath("/admin/support-chats")}
@@ -312,39 +348,35 @@ function SideBar(props) {
         </Link>
         <Link className="link_style" to="/admin/about-us">
           <ListItem
-           onClick={() => setcurrentpath("/admin/about-us")}
-           button
-           key="/user"
-           className="Center"
-           style={{
-             display: "flex",
-             justifyContent: "center",
-             borderRight:
-               currentpath === "/admin/support-chats"
-                 ? "6px solid #000"
-                 : "6px solid transparent",
-           }}
-           >
-              <ListItemIcon
-               style={{
+            onClick={() => setcurrentpath("/admin/about-us")}
+            button
+            key="/user"
+            className="Center"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              borderRight:
+                currentpath === "/admin/support-chats"
+                  ? "6px solid #000"
+                  : "6px solid transparent",
+            }}
+          >
+            <ListItemIcon
+              style={{
                 fontSize: "25px",
-                color:
-                  currentpath === "/admin/about-us" ? "#000" : "#828282",
+                color: currentpath === "/admin/about-us" ? "#000" : "#828282",
               }}
-              >
-                <GrCircleInformation size={24} color="black" />
-                </ListItemIcon>
-                <ListItemText
-                  style={{
-                    width: "76px",
-                    color:
-                      currentpath === "/admin/about-us" ? "#000" : "#828282",
-                  }}
-                >
-                      <span className="content">About us</span>
-                </ListItemText>
-
-              
+            >
+              <GrCircleInformation size={24} color="black" />
+            </ListItemIcon>
+            <ListItemText
+              style={{
+                width: "76px",
+                color: currentpath === "/admin/about-us" ? "#000" : "#828282",
+              }}
+            >
+              <span className="content">About us</span>
+            </ListItemText>
           </ListItem>
         </Link>
       </List>

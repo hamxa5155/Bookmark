@@ -18,8 +18,8 @@ import { isValidHttpUrl } from '../utils';
 //redux
 import { connect } from "react-redux";
 import { fetchBooks } from "../store/books/actions";
-import {Grid} from "@material-ui/core";
-import {Col, Row} from "react-bootstrap";
+import { Grid } from "@material-ui/core";
+import { Col, Row } from "react-bootstrap";
 const Listings = require('../data/Listings.json');
 
 function Marketplace(props) {
@@ -53,7 +53,7 @@ function Marketplace(props) {
                             setPopupType={setPopupType}
                         />
                     )}
-                    {spacerDiv && (<div className="spacer"/>)}
+                    {spacerDiv && (<div className="spacer" />)}
                     <div className="marketplace-title">
                         <h2 className="dropshadow">Marketplace</h2>
                     </div>
@@ -65,39 +65,39 @@ function Marketplace(props) {
                                     type="text"
                                     placeholder="Search by ISBN, Book Title, Author, Class"
                                 />
-                                <SearchIcon className="search-icon"/>
+                                <SearchIcon className="search-icon" />
                             </div>
 
                         </div>
                         <div className="sort-and-filter__container">
-                            <Dropdown title={<div style={{display: "flex"}}>Filter By <ExpandMoreIcon/></div>}>
+                            <Dropdown title={<div style={{ display: "flex" }}>Filter By <ExpandMoreIcon /></div>}>
                                 <div className="drop-down__container">
                                     <div className="filter-item">
-                                        <input id="price" name="price" type="checkbox"/>
+                                        <input id="price" name="price" type="checkbox" />
                                         <label htmlFor="price">Price Negotiable</label>
                                     </div>
                                     <div className="filter-item">
-                                        <input id="new" name="new" type="checkbox"/>
+                                        <input id="new" name="new" type="checkbox" />
                                         <label className="filter-item__new" htmlFor="new">New</label>
 
-                                        <input id="used" name="used" type="checkbox"/>
+                                        <input id="used" name="used" type="checkbox" />
                                         <label htmlFor="used">Used</label>
                                     </div>
                                     <div className="filter-item seller-rating">
                                         Seller Rating:
-                                        <StarBorderIcon/>
-                                        <StarBorderIcon/>
-                                        <StarBorderIcon/>
-                                        <StarBorderIcon/>
-                                        <StarBorderIcon/>
+                                        <StarBorderIcon />
+                                        <StarBorderIcon />
+                                        <StarBorderIcon />
+                                        <StarBorderIcon />
+                                        <StarBorderIcon />
                                     </div>
                                     <div className="filter-item">
-                                        <input id="distance" name="distance" type="checkbox"/>
+                                        <input id="distance" name="distance" type="checkbox" />
                                         <label htmlFor="distance">Distance</label>
                                     </div>
                                 </div>
                             </Dropdown>
-                            <Dropdown title={<div style={{display: "flex"}}>Sort By <ExpandMoreIcon/></div>}>
+                            <Dropdown title={<div style={{ display: "flex" }}>Sort By <ExpandMoreIcon /></div>}>
                                 <div className="drop-down__container drop-down-right">
                                     <div>Relevance</div>
                                     <div>Price Low to High</div>
@@ -123,7 +123,7 @@ function Marketplace(props) {
                             ))}
                         </div>
                     </div>
-                    <Footer/>
+                    <Footer />
                 </div>
 
             </Grid>
@@ -135,6 +135,7 @@ const mapStateToProps = (state) => ({
     user: state.auth.user,
     books: state.books.allBooks
 });
+
 const mapDispatchToProps = {
     fetchBooks
 };
