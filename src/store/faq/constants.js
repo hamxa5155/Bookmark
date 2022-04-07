@@ -1,3 +1,5 @@
-export const ADDABOUTUS = "ADDABOUTUS";
-export const GETABOUTUS = "GETABOUTUS";
-export const ABOUT_US_LOADING = "ABOUT_US_LOADING";
+export const ADDFAQ = "ADDFAQ";
+export const GETALLFAQ = "GETFAALLFAQ";
+export const DELETEFAQ = "DELETEFAQ";
+export const UPDATEFAQ = "UPDATEFAQ";
+export const FAQ__LOADING = "FAQ__LOADING";
