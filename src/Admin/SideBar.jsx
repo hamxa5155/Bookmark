@@ -112,9 +112,8 @@ function SideBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const handlelogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem("admintoken");
-    window.location.href = "/";
   };
   const drawer = (
     <div className="space">
@@ -348,11 +347,9 @@ function SideBar(props) {
           </ListItem>
         </Link>
 
-
-
-        <Link className="link_style" to="/Adminfaq">
+        <Link className="link_style" to="/admin-faq">
           <ListItem
-            onClick={() => setcurrentpath("/Adminfaq")}
+            onClick={() => setcurrentpath("/admin-faq")}
             button
             key="/user"
             className="Center"
@@ -360,7 +357,7 @@ function SideBar(props) {
               display: "flex",
               justifyContent: "center",
               borderRight:
-                currentpath === "/Adminfaq"
+                currentpath === "/admin-faq"
                   ? "6px solid #000"
                   : "6px solid transparent",
             }}
@@ -368,7 +365,7 @@ function SideBar(props) {
             <ListItemIcon
               style={{
                 fontSize: "25px",
-                color: currentpath === "/Adminfaq" ? "#000" : "#828282",
+                color: currentpath === "/admin-faq" ? "#000" : "#828282",
               }}
             >
               <FaJediOrder size={24} color="black" />{" "}
@@ -376,16 +373,13 @@ function SideBar(props) {
             <ListItemText
               style={{
                 width: "76px",
-                color: currentpath === "/Adminfaq" ? "#000" : "#828282",
+                color: currentpath === "/admin-faq" ? "#000" : "#828282",
               }}
             >
               <span className="content"> Add FAQ</span>
             </ListItemText>
           </ListItem>
         </Link>
-
-
-
 
         <Link className="link_style" to="/admin/about-us">
           <ListItem
@@ -427,16 +421,15 @@ function SideBar(props) {
           button
           key="/user"
           onClick={(e) => {
-            handlelogout(e);
+            handleLogout(e);
           }}
           style={{ display: "flex", justifyContent: "center" }}
         >
           <ListItemIcon>
-            {" "}
             <FiLogOut size={24} color="black" />
           </ListItemIcon>
           <ListItemText>
-            <span className="content">Log out</span>
+            <span className="content" onClick={() => handleLogout()}>Log out</span>
           </ListItemText>
         </ListItem>
       </List>

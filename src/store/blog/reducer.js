@@ -1,32 +1,34 @@
 import {
-    ABOUT_US_LOADING,
-    ADDABOUTUS,
-    GETABOUTUS,
+    ADDABLOG,
+    GETBLOGS,
+    DELETEBLOG,
+    UPDATEBLOG,
+    BLOG_LOADING,
 } from "./constants";
 
 const initialState = {
-    allAboutUs: [],
+    allBlogs: [],
     loading: false,
 };
-export function aboutUsReducer(
+export function blogReducer(
     state = initialState,
     action
 ) {
     switch (action.type) {
-        case ABOUT_US_LOADING:
+        case BLOG_LOADING:
             return {
                 ...state,
                 loading: action.payload
             };
-        case ADDABOUTUS:
+        case ADDABLOG:
             return {
                 ...state,
-                allAboutUs: [...state.allAboutUs, action.payload],
+                allBlogs: [...state.allBlogs, action.payload],
             };
-        case GETABOUTUS:
+        case GETBLOGS:
             return {
                 ...state,
-                allAboutUs: action.payload,
+                allBlogs: action.payload,
             };
         default:
             return state;

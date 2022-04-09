@@ -1,54 +1,28 @@
 import {
-    ADDABOUTUS,
-    GETABOUTUS,
-    ABOUT_US_LOADING
+    ADMINLOGIN,
+    ADMIN_LOADING
 } from "./constants";
-import { _fetchAboutUs, _createAboutUs } from "./services";
+import { _adminLogin, } from "./services";
 
 /* Login actions */
-export function aboutUsSetLoading(loading) {
+export function adminLoginSetLoading(loading) {
     return {
-        type: ABOUT_US_LOADING,
+        type: ADMIN_LOADING,
         payload: loading,
     };
 }
 
-export function aboutUsSetData(res) {
-    return {
-        type: GETABOUTUS,
-        payload: res,
-    };
-}
-export function pushCreateAboutUs(res) {
-    return {
-        type: ADDABOUTUS,
-        payload: res,
-    };
-}
-export const fetchAboutUs = () => (dispatch) => {
+export const adminLogin = (formData) => (dispatch) => {
     return new Promise((resolve, reject) => {
-        dispatch(aboutUsSetLoading(true));
-        _fetchAboutUs().then(async (res) => {
-            await dispatch(aboutUsSetData(res));
+        dispatch(adminLoginSetLoading(true));
+        _adminLogin(formData).then(async (res) => {
+            localStorage.setItem("admintoken", res.token)
+            // dispatch(pushCreateAboutUs(res));
             resolve(res);
         }).catch((err) => {
             reject(err)
         }).finally(() => {
-            dispatch(aboutUsSetLoading(false));
-        })
-    })
-};
-
-export const createAboutUs = (formData) => (dispatch) => {
-    return new Promise((resolve, reject) => {
-        dispatch(aboutUsSetLoading(true));
-        _createAboutUs(formData).then(async (res) => {
-            dispatch(pushCreateAboutUs(res));
-            resolve(res);
-        }).catch((err) => {
-            reject(err)
-        }).finally(() => {
-            dispatch(aboutUsSetLoading(false));
+            dispatch(adminLoginSetLoading(false));
         })
     })
 };

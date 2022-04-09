@@ -1,8 +1,8 @@
 import axios from "axios";
-import { API_URL_BACKEND } from "../../config";
+import { API_URL_BACKEND2 } from "../../config";
 export function _fetchAboutUs(params) {
     return new Promise((resolve, reject) => {
-        let url = `${API_URL_BACKEND}/fetch-aboutus`;
+        let url = `${API_URL_BACKEND2}/fetch-aboutus`;
         axios
             .get(url, {
                 withCredentials: true,
@@ -20,7 +20,7 @@ export function _fetchAboutUs(params) {
 export function _createAboutUs(formData) {
     return new Promise((resolve, reject) => {
         axios
-            .post(`${API_URL_BACKEND}/aboutus-create`, formData, {
+            .post(`${API_URL_BACKEND2}/aboutus-create`, formData, {
                 withCredentials: true,
             })
             .then(async (response) => {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter,
   Switch,
@@ -7,9 +8,11 @@ import {
   HashRouter,
 } from "react-router-dom";
 
+import { connect } from "react-redux";
+
 import logo from "./logo.svg";
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import NavBar from "./components/NavBar.js";
 import NavBar2 from "./components/NavBarTwo.js";
 
@@ -60,14 +63,16 @@ import Team from "./Admin/Team/Team";
 import Blogeditior from "./pages/Blogeditior";
 import Pagination from "./components/Pagination/Pagination";
 import Bloginfo from "./components/Bloginfo/Bloginfo";
-import Adminfaq from "./pages/Adminfaq"
+import Adminfaq from "./pages/Adminfaq";
 import Forgetpassword from "./Admin/Team/Forgetpassword";
 import Resetpaswword from "./Admin/Team/Resetpaswword";
-
+import { fetchFaq } from "./store/faq/actions"
+import { fetchAboutUs } from "./store/aboutUs/actions";
+import { fetchOurTeam } from "./store/ourTeam/actions";
+import { fetchBlog } from "./store/blog/actions";
 const socket = socketIOClient(BASE_URL);
 
-
-function App() {
+function App(props) {
   const [newMessage, setNewMessage] = useState("");
   const [play, setPlay] = useState(false);
   const [check, setcheck] = useState({
@@ -98,6 +103,13 @@ function App() {
   //
   // }, [localStorage.getItem('isLoggedIn-bookmarkd')])
 
+  useEffect(() => {
+    props.fetchFaq();
+    props.fetchOurTeam();
+    props.fetchAboutUs();
+    props.fetchBlog()
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -108,7 +120,7 @@ function App() {
           <Route exact path="/main-home" render={(props) => <Home />} />
 
           {/* clear */}
-          <Route exact path='/about-us' component={Aboutus} />
+          <Route exact path="/about-us" component={Aboutus} />
           <Route
             exact
             path="/log-in"
@@ -252,30 +264,28 @@ function App() {
           <Route path="/condition">
             <Condition />
           </Route>
-          <Route path="/faq">
+          {/* <Route path="/faq">
             <Faq />
-          </Route>
+          </Route> */}
 
           <Route path="/bloge">
             <Pagination />
           </Route>
           <Route path="/editor">
-           <Blogeditior/>
+            <Blogeditior />
           </Route>
 
-
-          <Route path="/resetpasword">
-           <Resetpaswword/>
+          <Route path="/resetpasword/:token">
+            <Resetpaswword />
           </Route>
 
-          <Route path="/setemail">
-           <Forgetpassword/>
+          <Route path="/forgotpassword">
+            <Forgetpassword />
           </Route>
 
           <Route path="/bloginfo">
             <Bloginfo />
           </Route>
-
 
           <Route exact path="/">
             <Redirect to="/main-home" />
@@ -298,6 +308,7 @@ function App() {
               render={(props) => <SupportChat {...props} />}
             />
             <Route exact path="/chat-box/:id" component={ChatBox} />
+            <Route exact path="/admin-faq" component={Adminfaq} />
             <Route exact path="/admin/about-us" component={About} />
           </SideBar>
 
@@ -318,10 +329,17 @@ function App() {
         onFinishedPlaying={() => setPlay(false)}
       />
     </div>
-
-
-
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  // user: state.auth.user,
+  // books: state.books.allBooks
+});
+const mapDispatchToProps = {
+  fetchFaq,
+  fetchOurTeam,
+  fetchAboutUs,
+  fetchBlog,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

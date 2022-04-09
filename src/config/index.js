@@ -1,8 +1,8 @@
 // export const API_URL  = 'https://bookmarkd-apis.herokuapp.com/';
 // export const BASE_URL = 'https://bookmarkd-apis.herokuapp.com/';
-// export const API_URL_BACKEND = "http://35.172.149.52/";
-export const API_URL_BACKEND = "http://localhost:8080"
-//export const API_URL = "http://3.209.39.37:3000/";
+export const API_URL_BACKEND = "http://35.172.149.52/";
+export const API_URL_BACKEND2 = "http://localhost:8080"
+// export const API_URL = "http://3.209.39.37:3000/";
 // export const BASE_URL = "http://localhost:8080/";
 // export const API_URL="http://localhost:8080/"
 export const BASE_URL = "http://35.172.149.52/";

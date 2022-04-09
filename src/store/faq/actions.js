@@ -1,54 +1,56 @@
 import {
-    ADDABOUTUS,
-    GETABOUTUS,
-    ABOUT_US_LOADING
+    ADDFAQ,
+    GETALLFAQ,
+    DELETEFAQ,
+    UPDATEFAQ,
+    FAQ__LOADING,
 } from "./constants";
-import { _fetchAboutUs, _createAboutUs } from "./services";
+import { _fetchFaq, _createFaq } from "./services";
 
 /* Login actions */
-export function aboutUsSetLoading(loading) {
+export function faqSetLoading(loading) {
     return {
-        type: ABOUT_US_LOADING,
+        type: FAQ__LOADING,
         payload: loading,
     };
 }
 
-export function aboutUsSetData(res) {
+export function faqtData(res) {
     return {
-        type: GETABOUTUS,
+        type: GETALLFAQ,
         payload: res,
     };
 }
 export function pushCreateAboutUs(res) {
     return {
-        type: ADDABOUTUS,
+        type: ADDFAQ,
         payload: res,
     };
 }
-export const fetchAboutUs = () => (dispatch) => {
+export const fetchFaq = () => (dispatch) => {
     return new Promise((resolve, reject) => {
-        dispatch(aboutUsSetLoading(true));
-        _fetchAboutUs().then(async (res) => {
-            await dispatch(aboutUsSetData(res));
+        dispatch(faqSetLoading(true));
+        _fetchFaq().then(async (res) => {
+            await dispatch(faqtData(res));
             resolve(res);
         }).catch((err) => {
             reject(err)
         }).finally(() => {
-            dispatch(aboutUsSetLoading(false));
+            dispatch(faqSetLoading(false));
         })
     })
 };
 
-export const createAboutUs = (formData) => (dispatch) => {
+export const createFaq = (formData) => (dispatch) => {
     return new Promise((resolve, reject) => {
-        dispatch(aboutUsSetLoading(true));
-        _createAboutUs(formData).then(async (res) => {
+        dispatch(faqSetLoading(true));
+        _createFaq(formData).then(async (res) => {
             dispatch(pushCreateAboutUs(res));
             resolve(res);
         }).catch((err) => {
             reject(err)
         }).finally(() => {
-            dispatch(aboutUsSetLoading(false));
+            dispatch(faqSetLoading(false));
         })
     })
 };
