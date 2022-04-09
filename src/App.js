@@ -9,7 +9,7 @@ import {
 
 import logo from "./logo.svg";
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar.js";
 import NavBar2 from "./components/NavBarTwo.js";
 
@@ -60,12 +60,12 @@ import Team from "./Admin/Team/Team";
 import Blogeditior from "./pages/Blogeditior";
 import Pagination from "./components/Pagination/Pagination";
 import Bloginfo from "./components/Bloginfo/Bloginfo";
-import Adminfaq from "./pages/Adminfaq"
+import Adminfaq from "./pages/Adminfaq";
 import Forgetpassword from "./Admin/Team/Forgetpassword";
 import Resetpaswword from "./Admin/Team/Resetpaswword";
+import Contacttable from "./Admin/Contacttable";
 
 const socket = socketIOClient(BASE_URL);
-
 
 function App() {
   const [newMessage, setNewMessage] = useState("");
@@ -101,14 +101,18 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {!loggedIn ? <NavBar setMode={setMode} /> : <NavBar2 />}
+        {(window.location.pathname === "/admin/admin-team" || window.location.pathname === "/admin-faq" || window.location.pathname === "/admin/blog-editor" || window.location.pathname === "/admin/about-us"  || window.location.pathname === "/add-users" || window.location.pathname === "/support-chats" || window.location.pathname === "/admin/admin-quieries" ) ? null : !loggedIn ? (
+          <NavBar setMode={setMode} />
+        ) : (
+          <NavBar2 />
+        )}
 
         <Switch>
           {/* clear */}
           <Route exact path="/main-home" render={(props) => <Home />} />
 
           {/* clear */}
-          <Route exact path='/about-us' component={Aboutus} />
+          <Route exact path="/about-us" component={Aboutus} />
           <Route
             exact
             path="/log-in"
@@ -259,34 +263,39 @@ function App() {
           <Route path="/bloge">
             <Pagination />
           </Route>
-          <Route path="/editor">
-           <Blogeditior/>
-          </Route>
-
+          {/* <Route path="/editor">
+            <Blogeditior />
+          </Route> */}
 
           <Route path="/resetpasword">
-           <Resetpaswword/>
+            <Resetpaswword />
           </Route>
 
           <Route path="/setemail">
-           <Forgetpassword/>
+            <Forgetpassword />
           </Route>
 
           <Route path="/bloginfo">
             <Bloginfo />
           </Route>
 
+          {/* <Route path="/table">
+            <Contacttable />
+          </Route> */}
 
           <Route exact path="/">
             <Redirect to="/main-home" />
           </Route>
 
           <Route exact path="/admin-login" component={Adminlogin} />
+
           <SideBar>
             {/* <Route exact path="/admin/products" component={Products} />*/}
             <Route path="/team">
               <Team />
             </Route>
+
+            
             <Route
               exact
               path="/add-users"
@@ -299,6 +308,10 @@ function App() {
             />
             <Route exact path="/chat-box/:id" component={ChatBox} />
             <Route exact path="/admin/about-us" component={About} />
+            <Route exact path="/admin/admin-faq" component={Adminfaq} />
+            <Route exact path="/admin/admin-team" component={Team} />
+            <Route exact path="/admin/blog-editor" component={Blogeditior} />
+            <Route exact path="/admin/admin-quieries" component={Contacttable} />
           </SideBar>
 
           <Route component={NotFound} />
@@ -318,9 +331,6 @@ function App() {
         onFinishedPlaying={() => setPlay(false)}
       />
     </div>
-
-
-
   );
 }
 

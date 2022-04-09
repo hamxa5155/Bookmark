@@ -41,6 +41,7 @@ import { BiSupport } from "react-icons/bi";
 import { FaJediOrder } from "react-icons/fa";
 import pic from "../assets/bookmarkd_logo_03.svg";
 import Adminfaq from "../pages/Adminfaq";
+import Blogeditior from "../pages/Blogeditior";
 
 const drawerWidth = 300;
 
@@ -278,9 +279,9 @@ function SideBar(props) {
           </ListItem>
         </Link>
 
-        <Link className="link_style" to="/team">
+        <Link className="link_style" to="/admin/admin-team">
           <ListItem
-            onClick={() => setcurrentpath("/team")}
+            onClick={() => setcurrentpath("/admin/admin-team")}
             button
             key="/user"
             className="Center"
@@ -288,7 +289,7 @@ function SideBar(props) {
               display: "flex",
               justifyContent: "center",
               borderRight:
-                currentpath === "/team"
+                currentpath === "/admin/admin-team"
                   ? "6px solid #000"
                   : "6px solid transparent",
             }}
@@ -296,7 +297,7 @@ function SideBar(props) {
             <ListItemIcon
               style={{
                 fontSize: "25px",
-                color: currentpath === "/team" ? "#000" : "#828282",
+                color: currentpath === "/admin/admin-team" ? "#000" : "#828282",
               }}
             >
               <FaJediOrder size={24} color="black" />{" "}
@@ -304,7 +305,7 @@ function SideBar(props) {
             <ListItemText
               style={{
                 width: "76px",
-                color: currentpath === "/team" ? "#000" : "#828282",
+                color: currentpath ==="/admin/admin-team" ? "#000" : "#828282",
               }}
             >
               <span className="content">Add Team</span>
@@ -350,9 +351,9 @@ function SideBar(props) {
 
 
 
-        <Link className="link_style" to="/Adminfaq">
+        <Link className="link_style" to="/admin/admin-faq">
           <ListItem
-            onClick={() => setcurrentpath("/Adminfaq")}
+            onClick={() => setcurrentpath("/admin/admin-faq")}
             button
             key="/user"
             className="Center"
@@ -360,7 +361,7 @@ function SideBar(props) {
               display: "flex",
               justifyContent: "center",
               borderRight:
-                currentpath === "/Adminfaq"
+                currentpath === "/admin/admin-faq"
                   ? "6px solid #000"
                   : "6px solid transparent",
             }}
@@ -368,7 +369,7 @@ function SideBar(props) {
             <ListItemIcon
               style={{
                 fontSize: "25px",
-                color: currentpath === "/Adminfaq" ? "#000" : "#828282",
+                color: currentpath === "/admin/admin-faq" ? "#000" : "#828282",
               }}
             >
               <FaJediOrder size={24} color="black" />{" "}
@@ -376,14 +377,87 @@ function SideBar(props) {
             <ListItemText
               style={{
                 width: "76px",
-                color: currentpath === "/Adminfaq" ? "#000" : "#828282",
+                color: currentpath === "/admin/admin-faq" ? "#000" : "#828282",
               }}
             >
-              <span className="content"> Add FAQ</span>
+              <span className="content"> Add faq</span>
             </ListItemText>
           </ListItem>
         </Link>
 
+
+
+        <Link className="link_style" to="/admin/blog-editor" >
+          <ListItem
+            onClick={() => setcurrentpath("/admin/blog-editor" )}
+            button
+            key="/user"
+            className="Center"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              borderRight:
+                currentpath === "/admin/blog-editor" 
+                  ? "6px solid #000"
+                  : "6px solid transparent",
+            }}
+          >
+            <ListItemIcon
+              style={{
+                fontSize: "25px",
+                color:
+                  currentpath === "/admin/blog-editor" ? "#000" : "#828282",
+              }}
+            >
+              <BiSupport size={24} color="black" />{" "}
+            </ListItemIcon>
+            <ListItemText
+              style={{
+                width: "76px",
+                color:
+                  currentpath === "/admin/blog-editor" ? "#000" : "#828282",
+              }}
+            >
+              <span className="content">Add Blog</span>
+            </ListItemText>
+          </ListItem>
+        </Link>
+
+
+
+        <Link className="link_style" to="/admin/admin-quieries">
+          <ListItem
+            onClick={() => setcurrentpath("/admin/admin-quieries")}
+            button
+            key="/user"
+            className="Center"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              borderRight:
+                currentpath === "/admin/admin-quieries"
+                  ? "6px solid #000"
+                  : "6px solid transparent",
+            }}
+          >
+            <ListItemIcon
+              style={{
+                fontSize: "25px",
+                color: currentpath === "/admin/admin-quieries" ? "#000" : "#828282",
+              }}
+            >
+              <FaJediOrder size={24} color="black" />{" "}
+            </ListItemIcon>
+            <ListItemText
+              style={{
+                width: "76px",
+                color: currentpath ==="/admin/admin-quieries" ? "#000" : "#828282",
+              }}
+            >
+              <span className="content">Queries</span>
+            </ListItemText>
+          </ListItem>
+        </Link>
 
 
 
