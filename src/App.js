@@ -59,7 +59,7 @@ import Condition from "./components/Condition/Condition";
 import Team from "./Admin/Team/Team";
 import Blogeditior from "./pages/Blogeditior";
 import Pagination from "./components/Pagination/Pagination";
-import Bloginfo from "./components/Bloginfo/Bloginfo";
+
 import Adminfaq from "./pages/Adminfaq";
 import Forgetpassword from "./Admin/Team/Forgetpassword";
 import Resetpaswword from "./Admin/Team/Resetpaswword";
