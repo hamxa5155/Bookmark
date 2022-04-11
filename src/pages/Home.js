@@ -45,7 +45,6 @@ function Home(props) {
         email: "",
         subject: "",
         message: "",
-        detail: "",
     });
 
 

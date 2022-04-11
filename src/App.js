@@ -12,7 +12,6 @@ import { connect } from "react-redux";
 
 import logo from "./logo.svg";
 import "./App.css";
-
 import NavBar from "./components/NavBar.js";
 import NavBar2 from "./components/NavBarTwo.js";
 
@@ -66,10 +65,13 @@ import Bloginfo from "./components/Bloginfo/Bloginfo";
 import Adminfaq from "./pages/Adminfaq";
 import Forgetpassword from "./Admin/Team/Forgetpassword";
 import Resetpaswword from "./Admin/Team/Resetpaswword";
+import Contacttable from "./Admin/Contacttable"
 import { fetchFaq } from "./store/faq/actions"
 import { fetchAboutUs } from "./store/aboutUs/actions";
 import { fetchOurTeam } from "./store/ourTeam/actions";
 import { fetchBlog } from "./store/blog/actions";
+import { fetchContactUs } from "./store/contactUs/actions";
+
 const socket = socketIOClient(BASE_URL);
 
 function App(props) {
@@ -108,12 +110,17 @@ function App(props) {
     props.fetchOurTeam();
     props.fetchAboutUs();
     props.fetchBlog()
+    props.fetchContactUs()
   }, []);
 
   return (
     <div className="App">
       <BrowserRouter>
-        {!loggedIn ? <NavBar setMode={setMode} /> : <NavBar2 />}
+        {(window.location.pathname === "/admin/admin-team" || window.location.pathname === "/admin-login" || window.location.pathname === "/admin/admin-faq" || window.location.pathname === "/admin/blog-editor" || window.location.pathname === "/admin/about-us" || window.location.pathname === "/add-users" || window.location.pathname === "/support-chats" || window.location.pathname === "/admin/admin-quieries") ? null : !loggedIn ? (
+          <NavBar setMode={setMode} />
+        ) : (
+            <NavBar2 />
+          )}
 
         <Switch>
           {/* clear */}
@@ -271,9 +278,9 @@ function App(props) {
           <Route path="/bloge">
             <Pagination />
           </Route>
-          <Route path="/editor">
+          {/* <Route path="/editor">
             <Blogeditior />
-          </Route>
+          </Route> */}
 
           <Route path="/resetpasword/:token">
             <Resetpaswword />
@@ -294,9 +301,11 @@ function App(props) {
           <Route exact path="/admin-login" component={Adminlogin} />
           <SideBar>
             {/* <Route exact path="/admin/products" component={Products} />*/}
-            <Route path="/team">
+            {/* <Route path="/">
               <Team />
-            </Route>
+            </Route> */}
+
+
             <Route
               exact
               path="/add-users"
@@ -308,8 +317,11 @@ function App(props) {
               render={(props) => <SupportChat {...props} />}
             />
             <Route exact path="/chat-box/:id" component={ChatBox} />
-            <Route exact path="/admin-faq" component={Adminfaq} />
             <Route exact path="/admin/about-us" component={About} />
+            <Route exact path="/admin/admin-faq" component={Adminfaq} />
+            <Route exact path="/admin/admin-team" component={Team} />
+            <Route exact path="/admin/blog-editor" component={Blogeditior} />
+            <Route exact path="/admin/admin-quieries" component={Contacttable} />
           </SideBar>
 
           <Route component={NotFound} />
@@ -328,7 +340,7 @@ function App(props) {
         playStatus={play ? Sound.status.PLAYING : Sound.status.STOPPED}
         onFinishedPlaying={() => setPlay(false)}
       />
-    </div>
+    </div >
   );
 }
 
@@ -341,5 +353,6 @@ const mapDispatchToProps = {
   fetchOurTeam,
   fetchAboutUs,
   fetchBlog,
+  fetchContactUs,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

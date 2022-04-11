@@ -47,7 +47,6 @@ const Aboutus = (props) => {
       },
     ]);
   }, []);
-  console.log("smkdkl", props.allAboutUs[0].image)
   return (
     <div>
       <Container style={{ paddingTop: "7rem" }}>

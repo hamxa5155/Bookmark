@@ -19,9 +19,15 @@ export function _fetchBlogs() {
 
 export function _createBlog(formData) {
     return new Promise((resolve, reject) => {
+        let token = localStorage.getItem("admintoken")
         axios
-            .post(`${API_URL_BACKEND2}/blog-create`, formData, {
-                withCredentials: true,
+            .post(`${API_URL_BACKEND2}/blog-create`,
+                formData, {
+                headers: {
+                    'authorization': token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
             })
             .then(async (response) => {
                 console.log("blog  add response", response)

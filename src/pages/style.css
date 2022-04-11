@@ -2915,4 +2915,28 @@ input:checked + .inbox-slider:before {
 }
 .editor{
   margin-top: 200px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.editor_para{
+  
+  border: 2px solid #0fc662;
+  padding: 20px 10px;
+
+  width: 80%;
+  margin: 30px auto;
+}
+
+.editor_main{
+  margin-top: 20px !important;
+}
+.blog_btn{
+  text-align: center;
+}
+.table{
+  padding: 20px 3%;
+  
 }
