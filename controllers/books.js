@@ -5,12 +5,12 @@ const imageDispatcher = require('../aws/imageDispatcher');
 //load models
 const Book = require("../models/books");
 module.exports = (app, upload, authRequired) => {
-    app.post('/book-create', upload.single("image"), authRequired, async(req, res) => {
-        try{
+    app.post('/book-create', upload.single("image"), authRequired, async (req, res) => {
+        try {
             let filename = "";
-            if(req.file){
+            if (req.file) {
                 filename = req.file.filename;
-            }else{
+            } else {
                 filename = req.body.image;
             }
             const newBook = new Book({
@@ -28,16 +28,16 @@ module.exports = (app, upload, authRequired) => {
             })
             const resp = await newBook.save();
             res.status(201).json(resp);
-        }catch(err){
+        } catch (err) {
             res.status(400).json(err);
         }
     });
-    app.get('/fetch-own-listing', authRequired, async(req, res) => {
-        const books = await Book.find({created_by: req.user._id}).populate("created_by");
+    app.get('/fetch-own-listing', authRequired, async (req, res) => {
+        const books = await Book.find({ created_by: req.user._id }).populate("created_by");
         res.json(books);
     })
-    app.get('/fetch-marketplace', async(req, res) => {
-        const books = await Book.find({isSold: false}).populate("created_by");
+    app.get('/fetch-marketplace', async (req, res) => {
+        const books = await Book.find({ isSold: false }).populate("created_by");
         res.json(books);
     })
 }

@@ -8,6 +8,7 @@ const compression = require("compression");
 const helmet = require("helmet");
 const path = require("path");
 const multer = require("multer");
+const jwt = require('jsonwebtoken')
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -68,10 +69,30 @@ require("./controllers/logout")(app);
 require("./controllers/inventory")(app);
 
 const authRequired = (req, res, next) => {
+  console.log("au", req.isAuthenticated())
   if (req.isAuthenticated()) {
     next();
   } else {
     res.status(403).end();
+  }
+};
+const checkAdmin = async (req, res, next) => {
+  console.log("au", req.headers.authorization)
+  try {
+    console.log('check admin id', req.headers.authorization !== "null")
+    if (req.headers.authorization !== "null") {
+      const token = req.headers.authorization
+      const decodedToken = jwt.verify(token, "adminsecret")
+      console.log('Decoded Token', decodedToken);
+      req.adminObj = decodedToken
+      next()
+    }
+  } catch (err) {
+    console.log(err)
+    res.status(401).json({
+      message:
+        'Auhorization error! please send a valid token via authorization header!',
+    })
   }
 };
 //Uploads files
@@ -114,6 +135,13 @@ require("./controllers/chat")(app, authRequired);
 require("./controllers/orders")(app, authRequired);
 require("./controllers/notifications")(app, authRequired);
 require("./controllers/support")(app, authRequired);
+
+require("./controllers/aboutUs")(app, upload);
+require("./controllers/ourTeam")(app, upload);
+require("./controllers/contactUs")(app);
+require("./controllers/faq")(app);
+require("./controllers/blog")(app, upload, checkAdmin);
+require("./controllers/admin")(app, upload);
 
 ///multer
 app.use("/uploads", express.static(__dirname + "/uploads"));
