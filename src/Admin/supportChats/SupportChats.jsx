@@ -10,6 +10,7 @@ import ChatTable from "../../supportChats/chatTable/ChatTable";
 import socketIOClient from "socket.io-client";
 import { BASE_URL } from "../../config/index";
 import Sound from "react-sound";
+import Contacttable from '../Contacttable'
 
 export const SupportChat = (props) => {
   const socket = socketIOClient(BASE_URL);
@@ -73,6 +74,8 @@ export const SupportChat = (props) => {
           </Grid>
         </div>
       </div>
+
+      <Contacttable/>
     </>
   );
 };

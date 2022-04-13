@@ -1,21 +1,39 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom';
 import "../Admin/Adminlogin.css";
-const Adminlogin = () => {
+import Swal from "sweetalert2";
+import { connect } from "react-redux";
+import { adminLogin } from "../store/adminLogin/actions";
 
-const [email, SetEmail] = useState("");
-const [password, setPassword] = useState("");
 
-const onchangeEmail =(e)=>{
-    SetEmail([e.target.name]= e.target.value)
-}
-const onchangePassword =(e)=>{
+const Adminlogin = (props) => {
+  const history = useHistory();
+  const [email, SetEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onchangeEmail = (e) => {
+    SetEmail([e.target.name] = e.target.value)
+  }
+  const onchangePassword = (e) => {
     setPassword([e.target.name] = e.target.value)
-}
-const handlesubmit=(e)=>{
+  }
+  const handlesubmit = async (e) => {
     e.preventDefault()
-}
+    try {
+      let obj = {
+        email: email,
+        password: password,
+      }
+      const res = await props.adminLogin(obj);
+      Swal.fire("Successfully uploaded data", "", "success").then(() => {
+        history.push("/add-users");
+      });
+    } catch (err) {
+      console.log("error", err);
+      Swal.fire("Unable to be uploaded data", "", "error");
+    }
+  }
   return (
     <div>
       <Container>
@@ -27,7 +45,7 @@ const handlesubmit=(e)=>{
               </div>
               <div className="pt-4">
                 <input
-                onChange={(e)=>onchangeEmail(e)}
+                  onChange={(e) => onchangeEmail(e)}
                   className="login-email-box"
                   type="text"
                   placeholder="Email"
@@ -38,7 +56,7 @@ const handlesubmit=(e)=>{
               </div>
               <div className="pt-2">
                 <input
-                 onChange={(e)=>onchangePassword(e)}
+                  onChange={(e) => onchangePassword(e)}
                   className="login-email-box"
                   type="password"
                   placeholder="Password"
@@ -47,8 +65,8 @@ const handlesubmit=(e)=>{
                   required
                 />
               </div>
-              <div className="pt-4">
-                <Link to="/" className="login-submit-btn" onClick={handlesubmit}>Login</Link>
+              <div className="pt-4 pb-5">
+                <span className="login-submit-btn" onClick={(e) => handlesubmit(e)}>Login</span>
               </div>
             </div>
           </Col>
@@ -58,4 +76,12 @@ const handlesubmit=(e)=>{
   );
 };
 
-export default Adminlogin;
+
+
+const mapStateToProps = (state) => ({
+
+});
+const mapDispatchToProps = {
+  adminLogin
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Adminlogin);

@@ -5,11 +5,11 @@ import '../App.css';
 import Footer from '../components/Footer.js';
 import GraduationImage from '../assets/welcome_image.svg';
 import Swal from "sweetalert2";
-import { API_URL_BACKEND } from '../config';
+import { API_URL_BACKEND, API_URL_BACKEND2 } from '../config';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { connect } from "react-redux";
 import { loginSetUser } from "../store/auth/actions";
-import {Grid} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 
 function LogIn(props) {
@@ -67,7 +67,7 @@ function LogIn(props) {
 				}),
 				credentials: 'include'
 			}).then(res => res.json());
-			
+
 			if (user) {
 				setState({ ...state, error: null });
 				localStorage.setItem('isLoggedIn-bookmarkd', 'yes');
@@ -160,7 +160,7 @@ function LogIn(props) {
 		e.preventDefault();
 		if (!(state.firstNameError || state.lastNameError || state.confirmMsg || state.phoneError ||
 			state.dobError || state.emailError || state.passwordError || state.passwordConfirmError)) {
-			const res = await fetch(`${API_URL_BACKEND}signup`, {
+			const res = await fetch(`${API_URL_BACKEND2}/signup`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -249,9 +249,9 @@ function LogIn(props) {
 		}
 	}
 	useEffect(() => {
-		if (props.user?._id) {
+		if (props.user ?._id) {
 			history.push("/dashboard")
-		}else{
+		} else {
 			checkSignupStatus()
 		}
 	}, [props.user])
@@ -270,189 +270,205 @@ function LogIn(props) {
 
 							<div className={"signup-form-margin"}>
 								{props.mode === "signup" ?
-										<div className="login-container">
-											<div className="login-header">
-												<div className="login-option selected">Sign Up</div>
-												<div className="login-option" onClick={() => props.setMode("login")}>Log In</div>
-											</div>
-											{(!state.isInfoFilled) ?
-													<form onSubmit={handleSignup} className='loginform'>
-														<div className="login-inputs">
-															<div className="side-by-side">
-																<div style={{ width: "100%" }}>
-																	<input
-																			type="text"
-																			placeholder="First name"
-																			className="half-login-input"
-																			onChange={handleInputSignup}
-																			onBlur={validateFirstName}
-																			required
-																			style={{ width: "85%" }}
-																			name='firstName'
-																	/>
-																	{state.firstNameError && <div className='error'>
-																		{state.firstNameError}
-																	</div>}
-																</div>
-																<div style={{ width: "100%" }}>
-																	<input
-																			type="text"
-																			placeholder="Last name"
-																			className="half-login-input"
-																			onChange={handleInputSignup}
-																			onBlur={validateLastName}
-																			required
-																			style={{ width: "85%" }}
-																			name='lastName'
-																	/>
-																	{state.lastNameError && <div className='error'>
-																		{state.lastNameError}
-																	</div>}
-																</div>
-															</div>
-															<div className="side-by-side">
-																<div style={{ width: "100%" }}>
-																	<input
-																			type="date"
-																			placeholder="DOB"
-																			className="half-login-input"
-																			style={{ width: "85%" }}
-																			name='dob'
-																			onChange={handleInputSignup}
-																			onBlur={validateDob}
-																			required
-																	/>
-																	{state.dobError && <div className='error'>
-																		{state.dobError}
-																	</div>}
-																</div>
-																<div style={{ width: "100%" }}>
-																	<input
-																			type="number"
-																			placeholder="Phone"
-																			className="half-login-input"
-																			maxLength={10}
-																			onChange={handleInputSignup}
-																			onBlur={validatePhone}
-																			required
-																			style={{ width: "85%" }}
-																			name='phone'
-																	/>
-																	{state.phoneError && <div className='error'>
-																		{state.phoneError}
-																	</div>}
-																</div>
-															</div>
-															<div style={{ width: "100%" }}>
-																<input
-																		type="email"
-																		placeholder="@ufl.edu email"
-																		className="login-input"
-																		name='email'
-																		onChange={handleInputSignup}
-																		onBlur={validateEmail}
-																		required
-																/>
-																{state.emailError && <div className='error'>
-																	{state.emailError}
-																</div>}
-															</div>
-															<div style={{ width: "100%" }}>
-																<input
-																		type="password"
-																		placeholder="Password"
-																		className="login-input"
-																		name='password'
-																		onChange={handleInputSignup}
-																		onBlur={validatePassword}
-																		required
-																/>
-																{state.passwordError && <div className='error'>
-																	{state.passwordError}
-																</div>}
-															</div>
-															<div style={{ width: "100%" }}>
-																<input
-																		type="password"
-																		placeholder="Confirm password"
-																		className="login-input"
-																		onChange={handleInputSignup}
-																		required
-																		name='passwordConfirm'
-																/>
-																{state.passwordConfirmError && <div className='error'>
-																	{state.passwordConfirmError}
-																</div>}
-															</div>
-															<div className="button-holder">
-																<button type="submit">Create Account</button>
-																<div><a>Privacy Policy</a> & <a>Terms of Service Agreement</a></div>
-															</div>
-														</div>
-													</form>
-													: (
-															<form onSubmit={handleSignupConfirm} className='loginform'>
-																<div className="login-inputs">
-																	<p className="text-white">Sign Up Confirm</p>
-																	<div style={{ width: "100%" }}>
-																		<input
-																				type="text"
-																				placeholder="Code"
-																				className="login-input"
-																				onChange={handleInputSignup}
-																				// value={state.code}
-																				maxLength={5}
-																				required
-																				name='code'
-																		/>
-																		{state.confirmMsg && <div className={state.confirmMsg.class}>
-																			{state.confirmMsg.msg}
-																		</div>}
-																	</div>
-																	<div className="button-holder">
-																		<button type="submit">Complete Sign Up</button>
-																		<div><a>Privacy Policy</a> & <a>Terms of Service Agreement</a></div>
-																	</div>
-																</div>
-															</form>
-													)}
+									<div className="login-container">
+										<div className="login-header">
+											<div className="login-option selected">Sign Up</div>
+											<div className="login-option" onClick={() => props.setMode("login")}>Log In</div>
 										</div>
-										:
-										<div className="login-container">
-											<div className="login-header">
-												<div className="login-option" onClick={() => props.setMode("signup")}>Sign Up</div>
-												<div className="login-option selected">Log In</div>
-											</div>
-											<form className='loginform' onSubmit={handleLogin}>
+										{(!state.isInfoFilled) ?
+											<form onSubmit={handleSignup} className='loginform'>
 												<div className="login-inputs">
-													<input
-															name='email'
-															type='email'
-															placeholder=".edu email"
+													<div className="side-by-side">
+														<div style={{ width: "100%" }}>
+															<input
+																type="text"
+																placeholder="First name"
+																className="half-login-input"
+																onChange={handleInputSignup}
+																onBlur={validateFirstName}
+																required
+																style={{ width: "85%" }}
+																name='firstName'
+															/>
+															{state.firstNameError && <div className='error'>
+																{state.firstNameError}
+															</div>}
+														</div>
+														<div style={{ width: "100%" }}>
+															<input
+																type="text"
+																placeholder="Last name"
+																className="half-login-input"
+																onChange={handleInputSignup}
+																onBlur={validateLastName}
+																required
+																style={{ width: "85%" }}
+																name='lastName'
+															/>
+															{state.lastNameError && <div className='error'>
+																{state.lastNameError}
+															</div>}
+														</div>
+													</div>
+													<div className="side-by-side">
+														<div style={{ width: "100%" }}>
+															<input
+																type="date"
+																placeholder="DOB"
+																className="half-login-input"
+																style={{ width: "85%" }}
+																name='dob'
+																onChange={handleInputSignup}
+																onBlur={validateDob}
+																required
+															/>
+															{state.dobError && <div className='error'>
+																{state.dobError}
+															</div>}
+														</div>
+														<div style={{ width: "100%" }}>
+															<input
+																type="number"
+																placeholder="Phone"
+																className="half-login-input"
+																maxLength={10}
+																onChange={handleInputSignup}
+																onBlur={validatePhone}
+																required
+																style={{ width: "85%" }}
+																name='phone'
+															/>
+															{state.phoneError && <div className='error'>
+																{state.phoneError}
+															</div>}
+														</div>
+													</div>
+													<div style={{ width: "100%" }}>
+														<input
+															type="email"
+															placeholder="@ufl.edu email"
 															className="login-input"
-															onChange={handleInput}
+															name='email'
+															onChange={handleInputSignup}
+															onBlur={validateEmail}
 															required
-													/>
-													<input
-															name='password'
-															type='password'
+														/>
+														{state.emailError && <div className='error'>
+															{state.emailError}
+														</div>}
+													</div>
+													<div style={{ width: "100%" }}>
+														<input
+															type="password"
 															placeholder="Password"
 															className="login-input"
-															onChange={handleInput}
+															name='password'
+															onChange={handleInputSignup}
+															onBlur={validatePassword}
 															required
-													/>
-													{state.error && <div className='error'>
-														{state.error}
-													</div>}
+														/>
+														{state.passwordError && <div className='error'>
+															{state.passwordError}
+														</div>}
+													</div>
+													<div style={{ width: "100%" }}>
+														<input
+															type="password"
+															placeholder="Confirm password"
+															className="login-input"
+															onChange={handleInputSignup}
+															required
+															name='passwordConfirm'
+														/>
+														{state.passwordConfirmError && <div className='error'>
+															{state.passwordConfirmError}
+														</div>}
+													</div>
+
+
+
+													<div style={{ width: "100%" }}>
+														<input
+															type="checkbox"
+															className="login-checkbox"
+															onChange={handleInputSignup}
+															required
+															name='checkbox'
+														/>
+														
+													</div>
+
+
+													
 													<div className="button-holder">
-														<button type="submit" disabled={btnLoading}>
-															{btnLoading ? "..." : "Log In"}
-														</button>
-														<div>I forgot my username/password</div>
+														<button type="submit">Create Account</button>
+														<div><a>Privacy Policy</a> & <a>Terms of Service Agreement</a></div>
 													</div>
 												</div>
 											</form>
+											: (
+												<form onSubmit={handleSignupConfirm} className='loginform'>
+													<div className="login-inputs">
+														<p className="text-white">Sign Up Confirm</p>
+														<div style={{ width: "100%" }}>
+															<input
+																type="text"
+																placeholder="Code"
+																className="login-input"
+																onChange={handleInputSignup}
+																// value={state.code}
+																maxLength={5}
+																required
+																name='code'
+															/>
+															{state.confirmMsg && <div className={state.confirmMsg.class}>
+																{state.confirmMsg.msg}
+															</div>}
+														</div>
+														<div className="button-holder">
+															<button type="submit">Complete Sign Up</button>
+															<div><a>Privacy Policy</a> & <a>Terms of Service Agreement</a></div>
+														</div>
+													</div>
+												</form>
+											)}
+									</div>
+									:
+									<div className="login-container">
+										<div className="login-header">
+											<div className="login-option" onClick={() => props.setMode("signup")}>Sign Up</div>
+											<div className="login-option selected">Log In</div>
 										</div>
+										<form className='loginform' onSubmit={handleLogin}>
+											<div className="login-inputs">
+												<input
+													name='email'
+													type='email'
+													placeholder=".edu email"
+													className="login-input"
+													onChange={handleInput}
+													required
+												/>
+												<input
+													name='password'
+													type='password'
+													placeholder="Password"
+													className="login-input"
+													onChange={handleInput}
+													required
+												/>
+												{state.error && <div className='error'>
+													{state.error}
+												</div>}
+												<div className="button-holder">
+													<button type="submit" disabled={btnLoading}>
+														{btnLoading ? "..." : "Log In"}
+													</button>
+													<div>I forgot my username/password</div>
+												</div>
+											</div>
+										</form>
+									</div>
 								}
 
 							</div>

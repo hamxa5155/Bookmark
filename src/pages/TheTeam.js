@@ -1,7 +1,7 @@
 import "../pages/style.css";
 import "../App.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import one from "../assets/A1.svg";
 import two from "../assets/A2.svg";
 import three from "../assets/A3.svg";
@@ -19,20 +19,20 @@ import TopBubble from "../assets/bubble-icon-04.svg";
 import BottomBubble from "../assets/bubble-icon-05.svg";
 import { Divider, Grid } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { API_URL_BACKEND2 } from "../config";
 
-function TheTeam() {
+function TheTeam(props) {
   const renderCustomThumbs = () => {
-    const thumbList = imgs.map((product, index) => (
-      
+    const thumbList = props.allOurTeam.map((product, index) => (
+
       <div key={index} className="d-flex flex-column justify-center">
-        {index}
         <div className="thumb-img">
-          {" "}
-          <img src={product.src} height="70"  />
+          <img src={API_URL_BACKEND2 + "/uploads/" + product.image} height="70" />
         </div>
 
-        <div className="title-thumb">{product.title}</div>
-        <div className="sub-thumb">{product.subti}</div>
+        <div className="title-thumb">{product.name}</div>
+        <div className="sub-thumb">{product.designation}</div>
       </div>
     ));
     return thumbList;
@@ -47,30 +47,33 @@ function TheTeam() {
         "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
     },
     {
-        src: two,
-        title: "John Steiner",
-        subti: "Founder | CEO",
-        detail:
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      },
-      {
-        src: three,
-        title: "John Steiner",
-        subti: "Founder | CEO",
-        detail:
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      },
-      {
-        src: four,
-        title: "John Steiner",
-        subti: "Founder | CEO",
-        detail:
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      },
-  
+      src: two,
+      title: "John Steiner",
+      subti: "Founder | CEO",
+      detail:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+    },
+    {
+      src: three,
+      title: "John Steiner",
+      subti: "Founder | CEO",
+      detail:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+    },
+    {
+      src: four,
+      title: "John Steiner",
+      subti: "Founder | CEO",
+      detail:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+    },
+
   ];
   const imgs = [
-    { src: three, title: "John Steiner", subti: "CEO" },
+    {
+      src: three, title: "John Steiner",
+      subti: "CEO"
+    },
     {
       src: four,
       title: "John Steiner",
@@ -86,7 +89,7 @@ function TheTeam() {
       title: "John Steiner",
       subti: "CO-Founder",
     },
-  
+
   ];
 
   const [spacerDiv, setSpacerDiv] = useState(true);
@@ -97,7 +100,7 @@ function TheTeam() {
 
     localStorage.setItem("isHomePage", "no");
   }, []);
-
+  console.log("all allOurTeam", props.allOurTeam)
   return (
     <>
       <Grid
@@ -117,31 +120,7 @@ function TheTeam() {
               a little bit more about who they are and what they do:
             </div>
 
-            {/* <div className="book-card__container-small">
-                            <div className="team-card">
-                                <div className="semibold">Role</div>
-                                <img src={PlaceholderProfPic}/>
-                                <div className="semibold">Name</div>
-                                <div>Degree</div>
-                                <div className="tiny-text">Short bio</div>
-                            </div>
 
-                            <div className="team-card">
-                                <div className="semibold">Role</div>
-                                <img src={PlaceholderProfPic}/>
-                                <div className="semibold">Name</div>
-                                <div>Degree</div>
-                                <div className="tiny-text">Short bio</div>
-                            </div>
-
-                            <div className="team-card">
-                                <div className="semibold">Role</div>
-                                <img src={PlaceholderProfPic}/>
-                                <div className="semibold">Name</div>
-                                <div>Degree</div>
-                                <div className="tiny-text">Short bio</div>
-                            </div>
-                        </div> */}
 
             <Carousel
               // autoPlay={true}
@@ -159,14 +138,15 @@ function TheTeam() {
               showThumbs={true}
               renderThumbs={renderCustomThumbs}
             >
-              {topData.map((url, index) => {
-                 
+              {props.allOurTeam.map((url, index) => {
+
                 return (
                   <div
                     // key={index}
                     style={{ display: "flex", flexDirection: "row" }}
                   >
-                    {" "}
+
+
                     <div
                       style={{
                         width: "50%",
@@ -174,13 +154,13 @@ function TheTeam() {
                         textAlign: "left",
                       }}
                     >
-                      {" "}
-                      <div className="caro">{url.title}</div>
-                      <div className="carosub">{url.subti}</div>
+
+                      <div className="caro">"{url.name}</div>
+                      <div className="carosub">{url.designation}</div>
                       <div className="carodetail">{url.detail}</div>
                     </div>
-                    <img alt="" src={url.src} width="50%" />
-                    
+                    <img alt="" src={API_URL_BACKEND2 + "/uploads/" + url.image} width="50%" />
+
                   </div>
                 );
               })}
@@ -195,4 +175,10 @@ function TheTeam() {
   );
 }
 
-export default TheTeam;
+const mapStateToProps = (state) => ({
+  allOurTeam: state.ourTeamReducer.allOurTeam
+});
+const mapDispatchToProps = {
+
+};
+export default connect(mapStateToProps, mapDispatchToProps)(TheTeam);

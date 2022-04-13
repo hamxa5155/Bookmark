@@ -15,6 +15,11 @@ import { orderReducer } from "./orders/reducers";
 import { notificationReducer } from "./notifications/reducers";
 import { profileReducer } from "./profile/reducers";
 import { aboutUsReducer } from "./aboutUs/reducer";
+import { faqReducer } from "./faq/reducer";
+import { ourTeamReducer } from "./ourTeam/reducer";
+import { contactUsReducer } from "./contactUs/reducer";
+import { adminReducer } from "./adminLogin/reducer";
+import { blogReducer } from "./blog/reducer";
 
 const rootReducer = combineReducers({
   supportChats: supportChatsReducer,
@@ -25,6 +30,11 @@ const rootReducer = combineReducers({
   notifications: notificationReducer,
   profile: profileReducer,
   aboutUsReducer: aboutUsReducer,
+  faqReducer: faqReducer,
+  ourTeamReducer: ourTeamReducer,
+  contactUsReducer: contactUsReducer,
+  adminReducer: adminReducer,
+  blogReducer: blogReducer,
 });
 // // Middleware: Redux Persist Config
 const persistConfig = {

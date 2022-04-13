@@ -2,8 +2,55 @@
 .table{
   margin-top: 180px;
 }
+.makeStyles-drawerPaper-6 {
+  width: 300px !important; 
+  background-color: white !important;
+  z-index: -99999999999999999999 !important;
+}
+.delete_icon{
+  font-size: 30px !important;
+  fill: #0fc662 !important;
+}
+.modal{
+  margin-top: 65px;
+  width: 100% !important;
+  z-index: 999999 !important;
+}
 
 
+
+
+.swal2-container {
+  display: grid;
+  position: fixed;
+  z-index: 1060;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  grid-template-areas:
+      "top-start top top-end"
+      "center-start center center-end"
+      "bottom-start bottom-center bottom-end";
+  grid-template-rows: minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto);
+  grid-template-rows: minmax(min-content,auto) minmax(min-content,auto) minmax(min-content,auto);
+  height: 100%;
+  padding: 0.625em;
+  overflow-x: hidden;
+  transition: background-color .1s;
+  -webkit-overflow-scrolling: touch;
+  z-index: 99999999;
+}
+
+
+
+.modal.show .modal-dialog {
+  transform: none;
+  max-width: 1054px !important;
+  /* height: 520px; */
+  height: 100vh !important;
+}
 .Main-wrapper {
   width: 100%;
   height: 100%;

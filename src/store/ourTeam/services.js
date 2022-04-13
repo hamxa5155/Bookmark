@@ -1,8 +1,8 @@
 import axios from "axios";
-import { API_URL_BACKEND } from "../../config";
+import { API_URL_BACKEND2 } from "../../config";
 export function _fetchOurTeam(params) {
     return new Promise((resolve, reject) => {
-        let url = `${API_URL_BACKEND}/fetch-ourteam`;
+        let url = `${API_URL_BACKEND2}/fetch-ourteam`;
         axios
             .get(url, {
                 withCredentials: true,
@@ -20,7 +20,7 @@ export function _fetchOurTeam(params) {
 export function _createOurTeam(formData) {
     return new Promise((resolve, reject) => {
         axios
-            .post(`${API_URL_BACKEND}/ourteam-create`, formData, {
+            .post(`${API_URL_BACKEND2}/ourteam-create`, formData, {
                 withCredentials: true,
             })
             .then(async (response) => {

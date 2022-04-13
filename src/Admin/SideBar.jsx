@@ -40,8 +40,8 @@ import { BiFoodMenu } from "react-icons/bi";
 import { BiSupport } from "react-icons/bi";
 import { FaJediOrder } from "react-icons/fa";
 import pic from "../assets/bookmarkd_logo_03.svg";
-import Adminfaq from "../pages/Adminfaq";
-import Blogeditior from "../pages/Blogeditior";
+
+
 
 const drawerWidth = 300;
 
@@ -113,9 +113,8 @@ function SideBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const handlelogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem("admintoken");
-    window.location.href = "/";
   };
   const drawer = (
     <div className="space">
@@ -305,7 +304,7 @@ function SideBar(props) {
             <ListItemText
               style={{
                 width: "76px",
-                color: currentpath ==="/admin/admin-team" ? "#000" : "#828282",
+                color: currentpath === "/admin/admin-team" ? "#000" : "#828282",
               }}
             >
               <span className="content">Add Team</span>
@@ -389,7 +388,7 @@ function SideBar(props) {
 
         <Link className="link_style" to="/admin/blog-editor" >
           <ListItem
-            onClick={() => setcurrentpath("/admin/blog-editor" )}
+            onClick={() => setcurrentpath("/admin/blog-editor")}
             button
             key="/user"
             className="Center"
@@ -397,7 +396,7 @@ function SideBar(props) {
               display: "flex",
               justifyContent: "center",
               borderRight:
-                currentpath === "/admin/blog-editor" 
+                currentpath === "/admin/blog-editor"
                   ? "6px solid #000"
                   : "6px solid transparent",
             }}
@@ -451,7 +450,7 @@ function SideBar(props) {
             <ListItemText
               style={{
                 width: "76px",
-                color: currentpath ==="/admin/admin-quieries" ? "#000" : "#828282",
+                color: currentpath === "/admin/admin-quieries" ? "#000" : "#828282",
               }}
             >
               <span className="content">Queries</span>
@@ -494,27 +493,26 @@ function SideBar(props) {
             </ListItemText>
           </ListItem>
         </Link>
-      </List>
+      </List >
       <List>
         <ListItem
           className="menutextcolor"
           button
           key="/user"
           onClick={(e) => {
-            handlelogout(e);
+            handleLogout(e);
           }}
           style={{ display: "flex", justifyContent: "center" }}
         >
           <ListItemIcon>
-            {" "}
             <FiLogOut size={24} color="black" />
           </ListItemIcon>
           <ListItemText>
-            <span className="content">Log out</span>
+            <span className="content" onClick={() => handleLogout()}>Log out</span>
           </ListItemText>
         </ListItem>
       </List>
-    </div>
+    </div >
   );
 
   return (

@@ -1,9 +1,11 @@
 import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
-  LOGIN_REMOVE_TOKEN
+  LOGIN_REMOVE_TOKEN,
+  RESETPASSWORD,
 } from "./constants";
 // import { loginWithPassword } from "./services";
+import { _forgotPassword, _resetPassword } from "./services";
 /* Login actions */
 export function loginSetLoading(loading) {
   return {
@@ -18,10 +20,10 @@ export function loginSetUser(params) {
   };
 }
 export function loginRemoveToken() {
-	return {
-	  type: LOGIN_REMOVE_TOKEN,
-	};
-  }
+  return {
+    type: LOGIN_REMOVE_TOKEN,
+  };
+}
 // export const checkLogin = (formData) => (dispatch) => {
 // 	return new Promise((resolve, reject) => {
 // 		dispatch(loginSetLoading(true));
@@ -35,3 +37,23 @@ export function loginRemoveToken() {
 // 		})
 // 	})
 // };
+export const forgotPassword = (email) => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    _forgotPassword(email).then(async (res) => {
+      resolve(res)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+};
+
+export const resetPassword = (data) => (dispatch) => {
+  console.log("data====", data)
+  return new Promise((resolve, reject) => {
+    _resetPassword(data).then(async (res) => {
+      resolve(res)
+    }).catch((err) => {
+      reject(err)
+    })
+  })
+};

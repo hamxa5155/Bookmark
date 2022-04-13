@@ -1,32 +1,34 @@
 import {
-    ABOUT_US_LOADING,
-    ADDABOUTUS,
-    GETABOUTUS,
+    ADDCONTACTUS,
+    GETCONTACTUS,
+    UPDATECONTACTUS,
+    DELETECONTACTUS,
+    CONTACT_US_LOADING
 } from "./constants";
 
 const initialState = {
-    allAboutUs: [],
+    allContactUs: [],
     loading: false,
 };
-export function aboutUsReducer(
+export function contactUsReducer(
     state = initialState,
     action
 ) {
     switch (action.type) {
-        case ABOUT_US_LOADING:
+        case CONTACT_US_LOADING:
             return {
                 ...state,
                 loading: action.payload
             };
-        case ADDABOUTUS:
+        case ADDCONTACTUS:
             return {
                 ...state,
-                allAboutUs: [...state.allAboutUs, action.payload],
+                allContactUs: [...state.allContactUs, action.payload],
             };
-        case GETABOUTUS:
+        case GETCONTACTUS:
             return {
                 ...state,
-                allAboutUs: action.payload,
+                allContactUs: action.payload,
             };
         default:
             return state;

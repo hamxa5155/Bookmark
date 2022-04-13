@@ -1,32 +1,34 @@
 import {
-    ABOUT_US_LOADING,
-    ADDABOUTUS,
-    GETABOUTUS,
+    ADDFAQ,
+    GETALLFAQ,
+    DELETEFAQ,
+    UPDATEFAQ,
+    FAQ__LOADING,
 } from "./constants";
 
 const initialState = {
-    allAboutUs: [],
+    allfaq: [],
     loading: false,
 };
-export function aboutUsReducer(
+export function faqReducer(
     state = initialState,
     action
 ) {
     switch (action.type) {
-        case ABOUT_US_LOADING:
+        case FAQ__LOADING:
             return {
                 ...state,
                 loading: action.payload
             };
-        case ADDABOUTUS:
+        case ADDFAQ:
             return {
                 ...state,
-                allAboutUs: [...state.allAboutUs, action.payload],
+                allfaq: [...state.allfaq, action.payload],
             };
-        case GETABOUTUS:
+        case GETALLFAQ:
             return {
                 ...state,
-                allAboutUs: action.payload,
+                allfaq: action.payload,
             };
         default:
             return state;

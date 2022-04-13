@@ -1,54 +1,56 @@
 import {
-    ADDABOUTUS,
-    GETABOUTUS,
-    ABOUT_US_LOADING
+    ADDCONTACTUS,
+    GETCONTACTUS,
+    UPDATECONTACTUS,
+    DELETECONTACTUS,
+    CONTACT_US_LOADING
 } from "./constants";
-import { _fetchAboutUs, _createAboutUs } from "./services";
+import { _fetchContactUs, _createContactUs } from "./services";
 
 /* Login actions */
-export function aboutUsSetLoading(loading) {
+export function contactUsSetLoading(loading) {
     return {
-        type: ABOUT_US_LOADING,
+        type: CONTACT_US_LOADING,
         payload: loading,
     };
 }
 
-export function aboutUsSetData(res) {
+export function contactUsSetData(res) {
     return {
-        type: GETABOUTUS,
+        type: GETCONTACTUS,
         payload: res,
     };
 }
-export function pushCreateAboutUs(res) {
+export function pushCreateContactUs(res) {
     return {
-        type: ADDABOUTUS,
+        type: ADDCONTACTUS,
         payload: res,
     };
 }
-export const fetchAboutUs = () => (dispatch) => {
+export const fetchContactUs = () => (dispatch) => {
     return new Promise((resolve, reject) => {
-        dispatch(aboutUsSetLoading(true));
-        _fetchAboutUs().then(async (res) => {
-            await dispatch(aboutUsSetData(res));
+        dispatch(contactUsSetLoading(true));
+        _fetchContactUs().then(async (res) => {
+            await dispatch(contactUsSetData(res));
             resolve(res);
         }).catch((err) => {
             reject(err)
         }).finally(() => {
-            dispatch(aboutUsSetLoading(false));
+            dispatch(contactUsSetLoading(false));
         })
     })
 };
 
-export const createAboutUs = (formData) => (dispatch) => {
+export const createContactUs = (formData) => (dispatch) => {
     return new Promise((resolve, reject) => {
-        dispatch(aboutUsSetLoading(true));
-        _createAboutUs(formData).then(async (res) => {
-            dispatch(pushCreateAboutUs(res));
+        dispatch(contactUsSetLoading(true));
+        _createContactUs(formData).then(async (res) => {
+            dispatch(pushCreateContactUs(res));
             resolve(res);
         }).catch((err) => {
             reject(err)
         }).finally(() => {
-            dispatch(aboutUsSetLoading(false));
+            dispatch(contactUsSetLoading(false));
         })
     })
 };

@@ -14,6 +14,7 @@ export function ourTeamSetLoading(loading) {
 }
 
 export function ourTeamSetData(res) {
+    console.log("vfvb", res)
     return {
         type: GETALLTEAM,
         payload: res,

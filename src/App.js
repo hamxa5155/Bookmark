@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter,
   Switch,
@@ -7,9 +8,10 @@ import {
   HashRouter,
 } from "react-router-dom";
 
+import { connect } from "react-redux";
+
 import logo from "./logo.svg";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar.js";
 import NavBar2 from "./components/NavBarTwo.js";
 
@@ -52,22 +54,30 @@ import Adduser from "./Admin/adduser";
 import SupportChat from "./Admin/supportChats/SupportChats";
 import Aboutus from "./pages/Aboutus";
 import Adminlogin from "./Admin/Adminlogin";
-import About from "./Admin/About";
+import About from "./Admin/about/About";
 import Privacy from "./components/Privacy/Privacy";
 import Faq from "./components/Faqe/Faq";
 import Condition from "./components/Condition/Condition";
 import Team from "./Admin/Team/Team";
-import Blogeditior from "./pages/Blogeditior";
 import Pagination from "./components/Pagination/Pagination";
-
-import Adminfaq from "./pages/Adminfaq";
+import Blogeditior from "../src/pages/newBlog/Blogeditior";
+import Adminfaq from "./components/Adminfaq/Adminfaq";
 import Forgetpassword from "./Admin/Team/Forgetpassword";
 import Resetpaswword from "./Admin/Team/Resetpaswword";
-import Contacttable from "./Admin/Contacttable";
+import Contacttable from "./Admin/Contacttable"
+import { fetchFaq } from "./store/faq/actions"
+import { fetchAboutUs } from "./store/aboutUs/actions";
+import { fetchOurTeam } from "./store/ourTeam/actions";
+import { fetchBlog } from "./store/blog/actions";
+import { fetchContactUs } from "./store/contactUs/actions";
+
+
+
+
 
 const socket = socketIOClient(BASE_URL);
 
-function App() {
+function App(props) {
   const [newMessage, setNewMessage] = useState("");
   const [play, setPlay] = useState(false);
   const [check, setcheck] = useState({
@@ -98,14 +108,22 @@ function App() {
   //
   // }, [localStorage.getItem('isLoggedIn-bookmarkd')])
 
+  useEffect(() => {
+    props.fetchFaq();
+    props.fetchOurTeam();
+    props.fetchAboutUs();
+    props.fetchBlog()
+    props.fetchContactUs()
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
-        {(window.location.pathname === "/admin/admin-team" || window.location.pathname === "/admin-faq" || window.location.pathname === "/admin/blog-editor" || window.location.pathname === "/admin/about-us"  || window.location.pathname === "/add-users" || window.location.pathname === "/support-chats" || window.location.pathname === "/admin/admin-quieries" ) ? null : !loggedIn ? (
+        {(window.location.pathname === "/admin/admin-team" || window.location.pathname === "/admin-login" || window.location.pathname === "/admin/admin-faq" || window.location.pathname === "/admin/blog-editor" || window.location.pathname === "/admin/about-us" || window.location.pathname === "/add-users" || window.location.pathname === "/support-chats" || window.location.pathname === "/admin/admin-quieries") ? null : !loggedIn ? (
           <NavBar setMode={setMode} />
         ) : (
-          <NavBar2 />
-        )}
+            <NavBar2 />
+          )}
 
         <Switch>
           {/* clear */}
@@ -256,9 +274,9 @@ function App() {
           <Route path="/condition">
             <Condition />
           </Route>
-          <Route path="/faq">
+          {/* <Route path="/faq">
             <Faq />
-          </Route>
+          </Route> */}
 
           <Route path="/bloge">
             <Pagination />
@@ -267,20 +285,16 @@ function App() {
             <Blogeditior />
           </Route> */}
 
-          <Route path="/resetpasword">
+          <Route path="/resetpasword/:token">
             <Resetpaswword />
           </Route>
 
-          <Route path="/setemail">
+          <Route path="/forgotpassword">
             <Forgetpassword />
           </Route>
 
-          <Route path="/bloginfo">
+          {/* <Route path="/bloginfo">
             <Bloginfo />
-          </Route>
-
-          {/* <Route path="/table">
-            <Contacttable />
           </Route> */}
 
           <Route exact path="/">
@@ -288,14 +302,13 @@ function App() {
           </Route>
 
           <Route exact path="/admin-login" component={Adminlogin} />
-
           <SideBar>
             {/* <Route exact path="/admin/products" component={Products} />*/}
-            <Route path="/team">
+            {/* <Route path="/">
               <Team />
-            </Route>
+            </Route> */}
 
-            
+
             <Route
               exact
               path="/add-users"
@@ -309,8 +322,9 @@ function App() {
             <Route exact path="/chat-box/:id" component={ChatBox} />
             <Route exact path="/admin/about-us" component={About} />
             <Route exact path="/admin/admin-faq" component={Adminfaq} />
+            <Route exact path="/admin/blog-editor" component={Blogeditior} /> 
             <Route exact path="/admin/admin-team" component={Team} />
-            <Route exact path="/admin/blog-editor" component={Blogeditior} />
+         
             <Route exact path="/admin/admin-quieries" component={Contacttable} />
           </SideBar>
 
@@ -330,8 +344,19 @@ function App() {
         playStatus={play ? Sound.status.PLAYING : Sound.status.STOPPED}
         onFinishedPlaying={() => setPlay(false)}
       />
-    </div>
+    </div >
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  // user: state.auth.user,
+  // books: state.books.allBooks
+});
+const mapDispatchToProps = {
+  fetchFaq,
+  fetchOurTeam,
+  fetchAboutUs,
+  fetchBlog,
+  fetchContactUs,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,54 +1,56 @@
 import {
-    ADDABOUTUS,
-    GETABOUTUS,
-    ABOUT_US_LOADING
+    ADDABLOG,
+    GETBLOGS,
+    DELETEBLOG,
+    UPDATEBLOG,
+    BLOG_LOADING,
 } from "./constants";
-import { _fetchAboutUs, _createAboutUs } from "./services";
+import { _fetchBlogs, _createBlog } from "./services";
 
 /* Login actions */
-export function aboutUsSetLoading(loading) {
+export function blogSetLoading(loading) {
     return {
-        type: ABOUT_US_LOADING,
+        type: BLOG_LOADING,
         payload: loading,
     };
 }
 
-export function aboutUsSetData(res) {
+export function blogsSetData(res) {
     return {
-        type: GETABOUTUS,
+        type: GETBLOGS,
         payload: res,
     };
 }
-export function pushCreateAboutUs(res) {
+export function pushCreateBlog(res) {
     return {
-        type: ADDABOUTUS,
+        type: ADDABLOG,
         payload: res,
     };
 }
-export const fetchAboutUs = () => (dispatch) => {
+export const fetchBlog = () => (dispatch) => {
     return new Promise((resolve, reject) => {
-        dispatch(aboutUsSetLoading(true));
-        _fetchAboutUs().then(async (res) => {
-            await dispatch(aboutUsSetData(res));
+        dispatch(blogSetLoading(true));
+        _fetchBlogs().then(async (res) => {
+            await dispatch(blogsSetData(res));
             resolve(res);
         }).catch((err) => {
             reject(err)
         }).finally(() => {
-            dispatch(aboutUsSetLoading(false));
+            dispatch(blogSetLoading(false));
         })
     })
 };
 
-export const createAboutUs = (formData) => (dispatch) => {
+export const createBlog = (formData) => (dispatch) => {
     return new Promise((resolve, reject) => {
-        dispatch(aboutUsSetLoading(true));
-        _createAboutUs(formData).then(async (res) => {
-            dispatch(pushCreateAboutUs(res));
+        dispatch(blogSetLoading(true));
+        _createBlog(formData).then(async (res) => {
+            dispatch(pushCreateBlog(res));
             resolve(res);
         }).catch((err) => {
             reject(err)
         }).finally(() => {
-            dispatch(aboutUsSetLoading(false));
+            dispatch(blogSetLoading(false));
         })
     })
 };
