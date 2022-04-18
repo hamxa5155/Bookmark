@@ -384,6 +384,22 @@ function LogIn(props) {
 															{state.passwordConfirmError}
 														</div>}
 													</div>
+
+
+
+													<div style={{ width: "100%" }}>
+														<input
+															type="checkbox"
+															className="login-checkbox"
+															onChange={handleInputSignup}
+															required
+															name='checkbox'
+														/>
+														
+													</div>
+
+
+													
 													<div className="button-holder">
 														<button type="submit">Create Account</button>
 														<div><a>Privacy Policy</a> & <a>Terms of Service Agreement</a></div>

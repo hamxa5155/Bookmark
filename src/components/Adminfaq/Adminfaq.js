@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
-import { createFaq } from "../store/faq/actions";
+import { createFaq } from "../../store/faq/actions";
+import Faqtable from '../Adminfaq/Faqtable';
+
 
 const Adminfaq = (props) => {
 
   const [faqState, setFaqState] = useState({
-    question: "",
+    question: "g hf",
     anwser: ""
   })
+
   const handleChange = (e) => {
     setFaqState({ ...faqState, [e.target.name]: e.target.value });
   }
@@ -28,11 +31,6 @@ const Adminfaq = (props) => {
     }
   };
 
-
-
-
-
-
   return (
     <>
       <div className="team_main">
@@ -42,7 +40,7 @@ const Adminfaq = (props) => {
             <input
               name="question"
               type="text"
-              value={faqState.question}
+              // value={faqState.question}
               onChange={(e) => handleChange(e)}
               placeholder="Question"
               className="team_name"
@@ -53,7 +51,7 @@ const Adminfaq = (props) => {
             <input
               name="anwser"
               type="text"
-              value={faqState.anwser}
+              // value={faqState.anwser}
               onChange={(e) => handleChange(e)}
               placeholder="Answer"
               className="team_designation"
@@ -65,6 +63,8 @@ const Adminfaq = (props) => {
           </div>
         </div>
       </div>
+      <Faqtable />
+
     </>
   )
 }

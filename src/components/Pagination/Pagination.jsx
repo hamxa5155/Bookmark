@@ -9,6 +9,7 @@ import { API_URL_BACKEND2 } from "../../config";
 // import { createAboutUs, fetchAboutUs } from "../store/aboutUs/actions";
 
 const Pagination = (props) => {
+  console.log("pagination props", props)
   const [users, setUsers] = useState(Blogdata.slice(0, 1000));
   const [pageNumber, setPageNumber] = useState(0);
   function returnDate(date) {

@@ -3,6 +3,7 @@ import "../Team/team.css";
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
 import { createOurTeam, fetchOurTeam } from "../../store/ourTeam/actions";
+import Teamtable from "./Teamtable";
 
 const Team = (props) => {
   const [teamState, setTeamState] = useState({
@@ -12,7 +13,7 @@ const Team = (props) => {
     designation: "",
     detail: "",
   });
-
+console.log("Team props", props)
   const handlechange = (e, image) => {
     console.log("comsat lahore");
     if (image) {
@@ -103,6 +104,7 @@ const Team = (props) => {
           </div>
         </div>
       </div>
+      <Teamtable/>
     </>
   );
 };

@@ -7,6 +7,14 @@
   color: #fff;
   font-size: 18px;
 }
+.login-checkbox{
+width: 30%;
+text-align: left;
+margin: 0PX auto !important;
+height: 23px !important;
+
+}
+
 .error {
   color: #f00;
 }
@@ -1353,11 +1361,6 @@ input:checked + .inbox-slider:before {
   padding: 1rem;
 }
 
-.recipient-label {
-}
-
-.recipient-name {
-}
 
 .message-bubbles__container {
   width: 80%;
@@ -1505,8 +1508,6 @@ input:checked + .inbox-slider:before {
   padding-top: 108px;
 }
 
-.profile-top {
-}
 
 .profile-top__inner {
   padding: 2rem 5% 0;
@@ -1552,8 +1553,6 @@ input:checked + .inbox-slider:before {
   font-family: "Poppins Bold";
 }
 
-.profile-username {
-}
 
 .profile-rating {
   margin-right: 15%;
@@ -1591,8 +1590,7 @@ input:checked + .inbox-slider:before {
   width: 17rem;
 }
 
-.user-profile-content {
-}
+
 
 .user-profile-content-title {
   font-size: 1.5rem;
@@ -1856,11 +1854,6 @@ input:checked + .inbox-slider:before {
   display: none;
 }
 
-.add-listing-col-two {
-}
-
-.add-listing-form {
-}
 
 .add-listing-label {
   width: 8rem;
@@ -2002,9 +1995,7 @@ input:checked + .inbox-slider:before {
   font-size: 1.15rem;
   height: auto;
 }
-.collapse:not(.show) {
-  /* display: inherit !important; */
-}
+
 .collapse {
   transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -2361,9 +2352,7 @@ input:checked + .inbox-slider:before {
     margin: 0 5px;
   }
 
-  .thirdImage {
-  }
-
+  
   .mobile-margin {
     margin-top: -20px;
   }

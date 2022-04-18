@@ -54,15 +54,14 @@ import Adduser from "./Admin/adduser";
 import SupportChat from "./Admin/supportChats/SupportChats";
 import Aboutus from "./pages/Aboutus";
 import Adminlogin from "./Admin/Adminlogin";
-import About from "./Admin/About";
+import About from "./Admin/about/About";
 import Privacy from "./components/Privacy/Privacy";
 import Faq from "./components/Faqe/Faq";
 import Condition from "./components/Condition/Condition";
 import Team from "./Admin/Team/Team";
-import Blogeditior from "./pages/Blogeditior";
 import Pagination from "./components/Pagination/Pagination";
-import Bloginfo from "./components/Bloginfo/Bloginfo";
-import Adminfaq from "./pages/Adminfaq";
+import Blogeditior from "../src/pages/newBlog/Blogeditior";
+import Adminfaq from "./components/Adminfaq/Adminfaq";
 import Forgetpassword from "./Admin/Team/Forgetpassword";
 import Resetpaswword from "./Admin/Team/Resetpaswword";
 import Contacttable from "./Admin/Contacttable"
@@ -71,6 +70,10 @@ import { fetchAboutUs } from "./store/aboutUs/actions";
 import { fetchOurTeam } from "./store/ourTeam/actions";
 import { fetchBlog } from "./store/blog/actions";
 import { fetchContactUs } from "./store/contactUs/actions";
+
+
+
+
 
 const socket = socketIOClient(BASE_URL);
 
@@ -290,9 +293,9 @@ function App(props) {
             <Forgetpassword />
           </Route>
 
-          <Route path="/bloginfo">
+          {/* <Route path="/bloginfo">
             <Bloginfo />
-          </Route>
+          </Route> */}
 
           <Route exact path="/">
             <Redirect to="/main-home" />
@@ -319,8 +322,9 @@ function App(props) {
             <Route exact path="/chat-box/:id" component={ChatBox} />
             <Route exact path="/admin/about-us" component={About} />
             <Route exact path="/admin/admin-faq" component={Adminfaq} />
+            <Route exact path="/admin/blog-editor" component={Blogeditior} /> 
             <Route exact path="/admin/admin-team" component={Team} />
-            <Route exact path="/admin/blog-editor" component={Blogeditior} />
+         
             <Route exact path="/admin/admin-quieries" component={Contacttable} />
           </SideBar>
 

@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react'
 
-
+import Blogtable from './Blogtable';
 import parse from 'html-react-parser';
 import Swal from "sweetalert2";
 import { connect } from "react-redux"
-import { createBlog } from "../store/blog/actions";
+import { createBlog } from "../../store/blog/actions";
 
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 
+
 const Blogeditior = (props) => {
+
+  const [show, setShow] = useState(false);
+
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+
+
+
   const [blogState, setBlogState] = useState({
     uploadfile: "",
     imageName: null,
@@ -46,6 +55,7 @@ const Blogeditior = (props) => {
       formData.append("title", blogState.title);
       formData.append("detail", hrmlText);
       const res = await props.createBlog(formData);
+      console.log("res", res)
       Swal.fire("Successfully uploaded data", "", "success").then(() => {
       });
     } catch (err) {
@@ -96,6 +106,8 @@ const Blogeditior = (props) => {
           Publish
             </button>
       </div>
+      <Blogtable/>
+    
     </>
   )
 }

@@ -40,8 +40,8 @@ import { BiFoodMenu } from "react-icons/bi";
 import { BiSupport } from "react-icons/bi";
 import { FaJediOrder } from "react-icons/fa";
 import pic from "../assets/bookmarkd_logo_03.svg";
-import Adminfaq from "../pages/Adminfaq";
-import Blogeditior from "../pages/Blogeditior";
+
+
 
 const drawerWidth = 300;
 

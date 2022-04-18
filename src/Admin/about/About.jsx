@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
-import { createAboutUs, fetchAboutUs } from "../store/aboutUs/actions";
+import { createAboutUs, fetchAboutUs } from "../../store/aboutUs/actions";
+
+import Abouttable from "./Abouttable";
 
 import { Link } from "react-router-dom";
-import "../Admin/About.css";
+import "../../Admin/about/About.css"
 const About = (props) => {
+
+  
+
   const [aboutUsState, setAboutUsState] = useState({
     uploadfile: "",
     imageName: "",
@@ -54,7 +59,6 @@ const About = (props) => {
             <div
               style={{
                 marginTop: "100px",
-                height: "800px",
                 textAlign: "center",
               }}
             >
@@ -111,6 +115,7 @@ const About = (props) => {
           </Col>
         </Row>
       </Container>
+      <Abouttable/>
     </>
   );
 };

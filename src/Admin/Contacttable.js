@@ -9,9 +9,9 @@ import Paper from '@mui/material/Paper';
 import './admin.css'
 import Swal from "sweetalert2";
 import { connect } from "react-redux";
+import { TiDelete } from 'react-icons/ti';
+import { AiFillEdit } from 'react-icons/ai';
 // import { createAboutUs, fetchAboutUs } from "../store/aboutUs/actions";
-
-
 
 
 
@@ -30,8 +30,9 @@ const Contacttable = (props) => {
                 <TableCell align="left">Email</TableCell>
                 <TableCell align="left">Subject</TableCell>
                 <TableCell align="left">Message</TableCell>
-                {/* <TableCell align="right">edit</TableCell>
-            <TableCell align="right">delete</TableCell> */}
+                <TableCell align="left">Edit</TableCell>
+                <TableCell align="left">Delete</TableCell>
+               
               </TableRow>
             </TableHead>
             <TableBody>
@@ -45,6 +46,9 @@ const Contacttable = (props) => {
                     <TableCell align="left">{data.email}</TableCell>
                     <TableCell align="left">{data.subject}</TableCell>
                     <TableCell align="left">{data.message}</TableCell>
+                    <TableCell align="left"><AiFillEdit className='delete_icon'/></TableCell>
+                    <TableCell align="left"><TiDelete className='delete_icon'
+                /></TableCell>
                   </TableRow>
                 )
               })}
