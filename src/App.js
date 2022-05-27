@@ -25,6 +25,8 @@ import Profile from "./pages/Profile.js";
 import Dashboard from "./pages/Dashboard.js";
 import YourBookmarks from "./pages/YourBookmarks.js";
 import YourFollowing from "./pages/YourFollowing.js";
+import YourFollowers from "./pages/YourFollowers.jsx";
+import Users from "./pages/Users.jsx";
 import YourListings from "./pages/YourListings.js";
 import NewListing from "./pages/NewListing.js";
 import YourNotifs from "./pages/YourNotifs.js";
@@ -64,16 +66,12 @@ import Blogeditior from "../src/pages/newBlog/Blogeditior";
 import Adminfaq from "./components/Adminfaq/Adminfaq";
 import Forgetpassword from "./Admin/Team/Forgetpassword";
 import Resetpaswword from "./Admin/Team/Resetpaswword";
-import Contacttable from "./Admin/Contacttable"
-import { fetchFaq } from "./store/faq/actions"
+import Contacttable from "./Admin/Contacttable";
+import { fetchFaq } from "./store/faq/actions";
 import { fetchAboutUs } from "./store/aboutUs/actions";
 import { fetchOurTeam } from "./store/ourTeam/actions";
 import { fetchBlog } from "./store/blog/actions";
 import { fetchContactUs } from "./store/contactUs/actions";
-
-
-
-
 
 const socket = socketIOClient(BASE_URL);
 
@@ -112,18 +110,26 @@ function App(props) {
     props.fetchFaq();
     props.fetchOurTeam();
     props.fetchAboutUs();
-    props.fetchBlog()
-    props.fetchContactUs()
+    props.fetchBlog();
+    props.fetchContactUs();
   }, []);
 
   return (
     <div className="App">
       <BrowserRouter>
-        {(window.location.pathname === "/admin/admin-team" || window.location.pathname === "/admin-login" || window.location.pathname === "/admin/admin-faq" || window.location.pathname === "/admin/blog-editor" || window.location.pathname === "/admin/about-us" || window.location.pathname === "/add-users" || window.location.pathname === "/support-chats" || window.location.pathname === "/admin/admin-quieries") ? null : !loggedIn ? (
+        {window.location.pathname === "/admin/admin-team" ||
+        window.location.pathname === "/admin-login" ||
+        window.location.pathname === "/admin/admin-faq" ||
+        window.location.pathname === "/admin/blog-editor" ||
+        window.location.pathname === "/admin/about-us" ||
+        window.location.pathname === "/add-users" ||
+        window.location.pathname === "/support-chats" ||
+        window.location.pathname ===
+          "/admin/admin-quieries" ? null : !loggedIn ? (
           <NavBar setMode={setMode} />
         ) : (
-            <NavBar2 />
-          )}
+          <NavBar2 />
+        )}
 
         <Switch>
           {/* clear */}
@@ -184,6 +190,16 @@ function App(props) {
             exact
             path="/dashboard/following"
             render={(props) => <YourFollowing {...props} />}
+          />
+          <Route
+            exact
+            path="/dashboard/followers"
+            render={(props) => <YourFollowers {...props} />}
+          />
+          <Route
+            exact
+            path="/dashboard/Users"
+            render={(props) => <Users {...props} />}
           />
           {/* clear */}
           <Route
@@ -308,7 +324,6 @@ function App(props) {
               <Team />
             </Route> */}
 
-
             <Route
               exact
               path="/add-users"
@@ -322,10 +337,14 @@ function App(props) {
             <Route exact path="/chat-box/:id" component={ChatBox} />
             <Route exact path="/admin/about-us" component={About} />
             <Route exact path="/admin/admin-faq" component={Adminfaq} />
-            <Route exact path="/admin/blog-editor" component={Blogeditior} /> 
+            <Route exact path="/admin/blog-editor" component={Blogeditior} />
             <Route exact path="/admin/admin-team" component={Team} />
-         
-            <Route exact path="/admin/admin-quieries" component={Contacttable} />
+
+            <Route
+              exact
+              path="/admin/admin-quieries"
+              component={Contacttable}
+            />
           </SideBar>
 
           <Route component={NotFound} />
@@ -344,7 +363,7 @@ function App(props) {
         playStatus={play ? Sound.status.PLAYING : Sound.status.STOPPED}
         onFinishedPlaying={() => setPlay(false)}
       />
-    </div >
+    </div>
   );
 }
 

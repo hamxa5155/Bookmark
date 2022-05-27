@@ -13,10 +13,14 @@ export function loginSetLoading(loading) {
     payload: loading,
   };
 }
-export function loginSetUser(params) {
+export function loginSetUser(params, token) {
+  console.log("params", params, token);
   return {
     type: LOGIN_SUCCESS,
-    payload: params,
+    payload: {
+      params: params,
+      token: token,
+    },
   };
 }
 export function loginRemoveToken() {
@@ -39,21 +43,25 @@ export function loginRemoveToken() {
 // };
 export const forgotPassword = (email) => (dispatch) => {
   return new Promise((resolve, reject) => {
-    _forgotPassword(email).then(async (res) => {
-      resolve(res)
-    }).catch((err) => {
-      reject(err)
-    })
-  })
+    _forgotPassword(email)
+      .then(async (res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 };
 
 export const resetPassword = (data) => (dispatch) => {
-  console.log("data====", data)
+  console.log("data====", data);
   return new Promise((resolve, reject) => {
-    _resetPassword(data).then(async (res) => {
-      resolve(res)
-    }).catch((err) => {
-      reject(err)
-    })
-  })
+    _resetPassword(data)
+      .then(async (res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 };

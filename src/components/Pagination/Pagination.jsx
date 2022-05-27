@@ -9,7 +9,7 @@ import { API_URL_BACKEND2 } from "../../config";
 // import { createAboutUs, fetchAboutUs } from "../store/aboutUs/actions";
 
 const Pagination = (props) => {
-  console.log("pagination props", props)
+  console.log("pagination props", props);
   const [users, setUsers] = useState(Blogdata.slice(0, 1000));
   const [pageNumber, setPageNumber] = useState(0);
   function returnDate(date) {
@@ -47,16 +47,23 @@ const Pagination = (props) => {
             },
           }}
           key={index}
-          className="blog_data1" >
+          className="blog_data1">
           <div className="blog_1">
             <div className="img_div">
               <a href="">
-                <img src={API_URL_BACKEND2 + "/uploads/" + users.image} alt="" srcset="" className="img" />
+                <img
+                  src={API_URL_BACKEND2 + "/uploads/" + users.image}
+                  alt=""
+                  srcset=""
+                  className="img"
+                />
               </a>
             </div>
             <div className="blog_text">
               <span className="by">{"by"}</span>
-              <span className="name">{users.created_by.firstName + "" + users.created_by.lastName}</span>
+              <span className="name">
+                {users.created_by.firstName + "" + users.created_by.lastName}
+              </span>
               <span className="line">{"-"}</span>
               <span className="date">{returnDate(users.createdAt)}</span>
             </div>
@@ -92,11 +99,8 @@ const Pagination = (props) => {
   );
 };
 
-
 const mapStateToProps = (state) => ({
   allBlogs: state.blogReducer.allBlogs,
 });
-const mapDispatchToProps = {
-
-};
+const mapDispatchToProps = {};
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

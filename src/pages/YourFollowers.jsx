@@ -10,15 +10,14 @@ import ProfilePic from "../assets/temp-profile.png";
 import Footer from "../components/Footer.js";
 import BubbleIcon03 from "../assets/bubble-icon-03.svg";
 import BackArrow from "../assets/back-arrow.svg";
-import YourFollowers from "./YourFollowers";
-function YourFollowing() {
+
+function YourFollowers() {
   const [selectedItem, setSelectedItem] = useState("following");
   const [textbookSelected, setTextbookSelected] = useState(false);
   const empty = false; // temp variable to switch between empty and non-empty states of this page
   const [spacerDiv, setSpacerDiv] = useState(true);
   const [users, setAllusers] = useState();
   const [Followings, setAllFollowings] = useState();
-  // const [showpage, setPage] = useState("following");
   const currentUser = useSelector((state) => state.auth.user._id);
 
   useEffect(() => {
@@ -30,38 +29,21 @@ function YourFollowing() {
         var filtered = response.data.filter((d) => d._id === currentUser);
 
         var newfiltered = response.data.filter((d) => d._id !== currentUser);
-        // console.log("newfiltered", newfiltered);
+        console.log("newfiltered", newfiltered);
         setAllusers(newfiltered);
 
-        setAllFollowings(filtered[0].following);
+        setAllFollowings(filtered[0].followers);
         // console.log("get all users", filtered, response.data);
         // console.log("gg all users", filtered[0].following);
       })
       .catch((err) => {
         console.log("Users error", err);
       });
-  }, [selectedItem]);
+  }, []);
 
   const history = useHistory();
-  const handleUnfollow = (id) => {
-    // e.preventDefault();
-    console.log("follow", id, currentUser);
-    let data = {
-      follower_id: currentUser,
-      following_id: id,
-    };
 
-    axios
-      .patch("http://localhost:8080/unFollow", data)
-      .then(async (response) => {
-        console.log("helooo? Data==?", response.data);
-        setSelectedItem(response.data);
-      })
-      .catch((err) => {
-        console.log("Followers error", err);
-      });
-  };
-  // console.log("user test ========== ", users, Followings);
+  console.log("user test ========== ", users, Followings);
   return (
     <>
       <div>
@@ -82,23 +64,23 @@ function YourFollowing() {
               </div>
 
               <div className="side-by-side dashboard-secondary-title">
-                <h3>Following</h3>
+                <h3>Followers</h3>
 
                 <div>Search Bar</div>
               </div>
 
               <div className="dashboard-selection-bar">
                 <div
-                  className="dashboard-selection-item dashboard-selection-item__selected"
+                  className="dashboard-selection-item "
                   id="following"
-                  // onClick={(e) => showPage(e.target.id)}
-                >
+                  onClick={() => history.push("/dashboard/following")}>
                   Following
                 </div>
                 <div
-                  className="dashboard-selection-item"
+                  className="dashboard-selection-item dashboard-selection-item dashboard-selection-item__selected"
                   id="followers"
-                  onClick={() => history.push("/dashboard/followers")}>
+                  //   onClick={(e) => toggleSelectionBar(e.target.id)}
+                >
                   Followers
                 </div>
               </div>
@@ -106,17 +88,17 @@ function YourFollowing() {
               <div className="my-dashboard__inner inner">
                 <div className="book-card__container">
                   {users?.map((user, index) => {
-                    // console.log("userkkkkk", user.followers);
+                    console.log("userkkkkk", user.following);
                     return (
                       <>
-                        {user?.followers &&
+                        {user?.following &&
                         Followings?.includes(user?._id) === true ? (
                           // Followings?.includes(user?.followers) === false ? (
                           <div>
-                            {/* {console.log(
+                            {console.log(
                               "iffff?? working test ",
                               user.firstName
-                            )} */}
+                            )}
                             <div className="profile-card">
                               <a href="/profile/0">
                                 <img
@@ -132,12 +114,6 @@ function YourFollowing() {
                               <a href="/profile/0" className="none">
                                 {user.email}
                               </a>
-                              <br />
-                              <button
-                                onClick={(e) => handleUnfollow(user?._id)}
-                                className="sign-up-button btn-mini">
-                                unfollow
-                              </button>
                             </div>
                             {/* {user._id} */}
                           </div>
@@ -146,7 +122,7 @@ function YourFollowing() {
                             {" "}
                             <div className="empty-state-div">
                               <div className="empty-state-title">
-                                Not following anyone yet
+                                {/* Not following anyone yet */}
                               </div>
                               {/* <img src={EmptyState} /> */}
                             </div>
@@ -166,4 +142,4 @@ function YourFollowing() {
   );
 }
 
-export default YourFollowing;
+export default YourFollowers;
