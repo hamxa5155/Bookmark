@@ -8,7 +8,7 @@ const compression = require("compression");
 const helmet = require("helmet");
 const path = require("path");
 const multer = require("multer");
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -20,8 +20,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));
   app.use(
     cors({
-      origin: "http://54.211.16.191",
-      // origin: "*",
+      // origin: "http://54.211.16.191",
+      origin: "*",
       credentials: true,
     })
   );
@@ -29,8 +29,8 @@ if (process.env.NODE_ENV === "production") {
 } else {
   app.use(
     cors({
-      origin: "http://54.211.16.191",
-      // origin: '*',
+      // origin: "http://54.211.16.191",
+      origin: "*",
       credentials: true,
     })
   );
@@ -69,7 +69,7 @@ require("./controllers/logout")(app);
 require("./controllers/inventory")(app);
 
 const authRequired = (req, res, next) => {
-  console.log("au", req.isAuthenticated())
+  console.log("au", req.isAuthenticated());
   if (req.isAuthenticated()) {
     next();
   } else {
@@ -77,22 +77,22 @@ const authRequired = (req, res, next) => {
   }
 };
 const checkAdmin = async (req, res, next) => {
-  console.log("au", req.headers.authorization)
+  console.log("au", req.headers.authorization);
   try {
-    console.log('check admin id', req.headers.authorization !== "null")
+    console.log("check admin id", req.headers.authorization !== "null");
     if (req.headers.authorization !== "null") {
-      const token = req.headers.authorization
-      const decodedToken = jwt.verify(token, "adminsecret")
-      console.log('Decoded Token', decodedToken);
-      req.adminObj = decodedToken
-      next()
+      const token = req.headers.authorization;
+      const decodedToken = jwt.verify(token, "adminsecret");
+      console.log("Decoded Token", decodedToken);
+      req.adminObj = decodedToken;
+      next();
     }
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(401).json({
       message:
-        'Auhorization error! please send a valid token via authorization header!',
-    })
+        "Auhorization error! please send a valid token via authorization header!",
+    });
   }
 };
 //Uploads files
