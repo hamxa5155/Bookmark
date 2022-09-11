@@ -63,6 +63,7 @@ const userSchema = new mongoose.Schema({
   },
   following: { type: Array, default: [] },
   followers: { type: Array, default: [] },
+  notification: { type: Array, default: [] },
   Permissions: {
     type: Object,
 

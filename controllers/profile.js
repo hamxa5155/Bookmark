@@ -141,8 +141,17 @@ module.exports = (app, authRequired) => {
           {
             $push: {
               followers: req.body.follower_id,
+              notification: {
+                follower: req.body.follower_id,
+                show: false,
+              },
             },
           },
+          // {
+          //   $push: {
+          //     notification: req.body.follower_id,
+          //   },
+          // },
           { new: true }
         );
         res.json({ success: { message: " You2  follows this user" } });
@@ -154,18 +163,37 @@ module.exports = (app, authRequired) => {
 
   app.patch("/unFollow", async (req, res) => {
     try {
-      console.log("req.body following===???", req.body);
+      console.log("req.body unfollowing===???", req.body);
       let follower = await User.find({
         _id: req.body.follower_id,
         following: req.body.following_id,
       });
-      console.log("my follower", follower);
+      console.log("  follower", follower);
       if (follower) {
         await User.findOneAndUpdate(
           { _id: req.body.follower_id },
           {
             $pull: {
               following: req.body.following_id,
+            },
+          },
+          { new: true }
+        );
+        res.json({ success: { message: " You  unfollow this user" } });
+      }
+      // remove follower:id from following(whom u unfollows) user data
+      let following = await User.find({
+        _id: req.body.following_id,
+        followers: req.body.follower_id,
+      });
+      console.log("hamza my follower?", following);
+
+      if (following) {
+        await User.findOneAndUpdate(
+          { _id: req.body.following_id },
+          {
+            $pull: {
+              followers: req.body.follower_id,
             },
           },
           { new: true }
