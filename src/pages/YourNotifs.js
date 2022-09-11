@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import '../pages/style.css';
-import '../App.css';
+import "../pages/style.css";
+import "../App.css";
 
-import Footer from '../components/Footer.js';
-import NavBar from '../components/NavBarTwo.js';
+import Footer from "../components/Footer.js";
+import NavBar from "../components/NavBarTwo.js";
 
-import BackArrow from '../assets/back-arrow.svg';
-import BubbleIcon03 from '../assets/bubble-icon-03.svg';
-import ProfilePic from '../assets/temp-profile.png';
-import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
-import EmptyState from '../assets/notifs-empty-state.svg';
+import BackArrow from "../assets/back-arrow.svg";
+import BubbleIcon03 from "../assets/bubble-icon-03.svg";
+import ProfilePic from "../assets/temp-profile.png";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import EmptyState from "../assets/notifs-empty-state.svg";
 
 //redux
 import { connect } from "react-redux";
@@ -20,35 +20,36 @@ import { fetchNotifications } from "../store/notifications/actions";
 function YourNotifs(props) {
   const [notifSelected, setNotifSelected] = useState(false);
   const empty = false; // temp variable to switch between empty and non-empty states of this page
-  const [spacerDiv, setSpacerDiv] = useState(true)
+  const [spacerDiv, setSpacerDiv] = useState(true);
 
   const checkForm = () => {
-    var inputs = document.getElementsByTagName('input');
+    var inputs = document.getElementsByTagName("input");
     for (var i = 0; i < inputs.length; i++) {
       if (inputs[i].checked) {
         return setNotifSelected(true);
       }
     }
     return setNotifSelected(false);
-  }
+  };
   useEffect(() => {
     props.fetchNotifications();
 
-    const isLoggedIn = localStorage.getItem('isLoggedIn-bookmarkd')
-    if (isLoggedIn === 'yes')
-      setSpacerDiv(false)
-  }, [])
+    const isLoggedIn = localStorage.getItem("isLoggedIn-bookmarkd");
+    if (isLoggedIn === "yes") setSpacerDiv(false);
+  }, []);
 
   return (
     <div className="profile">
       <div className="profile-inner">
-        {spacerDiv && (<div className="spacer"/>)}
+        {spacerDiv && <div className="spacer" />}
         <div className="bubble-top-right">
           <img src={BubbleIcon03} />
         </div>
         <div className="my-dashboard__inner inner">
           <div className="inline">
-            <a href="/dashboard"><img src={BackArrow} className="backarrow" /></a>
+            <a href="/dashboard">
+              <img src={BackArrow} className="backarrow" />
+            </a>
             <h2 className="dropshadow">My Dashboard</h2>
           </div>
           <div className="side-by-side dashboard-secondary-title">
@@ -57,14 +58,27 @@ function YourNotifs(props) {
           </div>
           <div className="side-by-side dashboard-selection-bar">
             <div>&nbsp;</div>
-            {notifSelected ? <a className="none">Delete messages <DeleteOutlineIcon className="center-img" /></a> : ''}
+            {notifSelected ? (
+              <a className="none">
+                Delete messages <DeleteOutlineIcon className="center-img" />
+              </a>
+            ) : (
+              ""
+            )}
           </div>
-          {props.notifications.length > 0 ?
+          {props.notifications.length > 0 ? (
             <form className="notif-container__outer">
               {props.notifications.map((notification, i) => (
                 <div className="notif-container" key={i}>
-                  <input type="checkbox" className="notif-item" onChange={() => checkForm()} />
-                  <img className="circle-profile-pic__mini notif-item" src={ProfilePic} />
+                  <input
+                    type="checkbox"
+                    className="notif-item"
+                    onChange={() => checkForm()}
+                  />
+                  <img
+                    className="circle-profile-pic__mini notif-item"
+                    src={ProfilePic}
+                  />
                   <div className="notif-item">{notification.notification}</div>
                 </div>
               ))}
@@ -101,25 +115,24 @@ function YourNotifs(props) {
               <div className="notif-item">Let us know about your experience! <a>Leave a review  <ArrowRightAltIcon className="center-img"/></a></div>
             </div> */}
             </form>
-            :
+          ) : (
             <div className="empty-state-div">
               <div className="empty-state-title">No notifications yet</div>
-              <img style={{width: '100%' }} src={EmptyState} />
+              <img style={{ width: "100%" }} src={EmptyState} />
             </div>
-          }
+          )}
         </div>
       </div>
 
       <Footer />
-
     </div>
   );
 }
 const mapStateToProps = (state) => ({
   user: state.auth.user,
-  notifications: state.notifications.notifications
+  notifications: state.notifications.notifications,
 });
 const mapDispatchToProps = {
-  fetchNotifications
+  fetchNotifications,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(YourNotifs);
